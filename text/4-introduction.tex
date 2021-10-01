@@ -14,4 +14,23 @@ Exploration of the possibility of applying AI-methods to active noise control.
 \\
 \\
 \section{Collection of citations}
-The traditional approach to acoustic noise control uses passive techniques such as enclosures, barriers, and silencers to attenuate the undesired noise [1], [2]. These passive silencers are valued for their high attenuation over a broad frequency range; however, they are relatively large, costly, and ineffective at low frequencies\cite{}
+The traditional approach to acoustic noise control uses passive techniques such as enclosures, barriers, and silencers to attenuate the undesired noise [1], [2]. These passive silencers are valued for their high attenuation over a broad frequency range; however, they are relatively large, costly, and ineffective at low frequencies\cite{Kuo1999}
+\\
+\\
+Since the characteristics of the acoustic noise source and the environment are time varying, the frequency content, amplitude, phase, and sound velocity of the undesired noise are nonstationary. An ANC system must therefore be adaptive in order to cope with these variations. Adaptive\cite{Kuo1999}
+\\
+\\
+Adaptive filters [8]–[16] adjust their coefficients to minimize an error signal and can be realized as (transversal) finite impulse response (FIR), (recursive) infinite impulse response (IIR), lattice, and transform-domain filters. The most common form ofadaptive filter is the transversal filter using the least- mean-square (LMS) algorithm.\cite{Kuo1999}
+\\
+\\
+Current applications for ANC include attenuation of unavoidable noise in the following end equipment. 1) Automotive: Including electronic mufflers for exhaust
+and induction systems, noise attenuation inside vehicle passenger compartments, active engine mounts, and so on. 2) Appliances: Including air-conditioning ducts, air conditioners, refrigerators, kitchen exhaust fans, washing machines, furnaces, dehumidifiers, lawn mowers, vacuum cleaners, headboards, room isolation, and so on. 3) Industrial: Fans, air ducts, chimneys, transformers,
+power generators, blowers, compressors, pumps, chain saws, wind tunnels, noisy plants (at noise sources or many local quiet zones), public phone booths, office cubicle partitions, ear protectors, headphones, and so on. 4) Transportation: Airplanes, ships, boats, pleasure mo- torboats, helicopters, snowmobiles, motorcycles, diesel lo- comotives, and so on.\cite{Kuo1999}
+\\
+\\
+ANC is based on either feedforward control, where a coherent reference noise input is sensed before it propagates past the secondary source, or feedback control [26], [27], where the active noise controller attempts to cancel the noise without the benefit of an “upstream” reference input.\cite{Kuo1999}
+\\
+\\
+The Objective of the adaptive filter $W(z)$ is to minimize the residual error signal $e(n)$. $E(z) = 0$ after the adaptive filter $W(z)$ converges. We then have $W(z) = P(z)$ for $X(z) \neq 0$, which implies that $y(n) = d(n)$. Therefore, the adaptive filter output $y(n)$ is identical to the primary disturbance $d(n)$. When $d(n)$ and $y(n)$ are acoustically combines, the residual error is $e(n) = d(n) - y(n) = 0$, which results in perfect cancellation of both sounds based on the principle of superposition.\\
+The performance of ANC can be determined by frequency-domain analysis of the residual error signal $e(n)$. The autopower spectrum of $e(n)$ is given by $$S_{ee}(w) = [1-C_{dx}(w)]S_{dd}(w)$$ \cite{Kuo1999}
+
