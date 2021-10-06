@@ -33,4 +33,18 @@ ANC is based on either feedforward control, where a coherent reference noise inp
 \\
 The Objective of the adaptive filter $W(z)$ is to minimize the residual error signal $e(n)$. $E(z) = 0$ after the adaptive filter $W(z)$ converges. We then have $W(z) = P(z)$ for $X(z) \neq 0$, which implies that $y(n) = d(n)$. Therefore, the adaptive filter output $y(n)$ is identical to the primary disturbance $d(n)$. When $d(n)$ and $y(n)$ are acoustically combines, the residual error is $e(n) = d(n) - y(n) = 0$, which results in perfect cancellation of both sounds based on the principle of superposition.\\
 The performance of ANC can be determined by frequency-domain analysis of the residual error signal $e(n)$. The autopower spectrum of $e(n)$ is given by $$S_{ee}(w) = [1-C_{dx}(w)]S_{dd}(w)$$ \cite{Kuo1999}
-
+\\
+\\
+As illustrated in Fig. 1, after the reference signal is
+picked up by the reference sensor, the controller will have
+some time to calculate the right output to the canceling
+loudspeaker. If this electrical delay becomes longer than
+the acoustic delay from the reference microphone to the
+canceling loudspeaker, the performance of the system will
+be substantially degraded. That is because the controller
+response is noncausal when the electrical delay is longer
+than the acoustic delay. When the causality condition is met,
+the ANC system is capable of canceling broad-band random
+noise. Note that if causality is not possible, the system can
+effectively control only narrow-band or periodic noise.
+\cite{Kuo1999}
