@@ -25,6 +25,20 @@ number = {October},
 title = {{Frequency-Domain Delayless Adaptive Control for Roughness}},
 year = {2011}
 }
+@article{Bodson2005,
+abstract = {The paper reviews available methods for the rejection of periodic disturbances. Such disturbances are often encountered in active noise and vibration control, due to rotating machinery. The emphasis of the paper is on feedback control problems where reference sensors are not available. The case where the frequency of the disturbance is known is considered first. Two sets of algorithms are discussed: one based on the internal model principle of feedback control theory, and the second based on adaptive feedforward cancellation. An interesting observation is that algorithms originating from both approaches can be shown to be equivalent under certain conditions. When the frequency of the disturbance is unknown, an intuitive approach consists in combining a method for the rejection of disturbances of known frequency with a frequency estimator. Alternatively, one may seek to develop a stable adaptation mechanism so that the disturbance is cancelled asymptotically. While algorithms can be designed to adapt to plant and disturbance parameters, the most successful approaches use some limited plant information to adapt the magnitude, frequency, and phase parameters of the control signal. Applications are discussed throughout the paper. Copyright {\textcopyright} 2004 John Wiley {\&} Sons, Ltd.},
+author = {Bodson, Marc},
+doi = {10.1002/acs.844},
+file = {:home/leonard/Desktop/Master/ma-active-noise-control/Literature/Controler/Rejection{\_}of{\_}Periodic{\_}Disturbances{\_}of{\_}Unknown{\_}and{\_}Time{\_}Varying{\_}Frequency.pdf:pdf},
+issn = {08906327},
+journal = {International Journal of Adaptive Control and Signal Processing},
+keywords = {Active noise control,Active vibration control,Adaptive algorithms,Disturbance rejection,Periodic signals,Phase-locked loops},
+number = {2-3},
+pages = {67--88},
+title = {{Rejection of periodic disturbances of unknown and time-varying frequency}},
+volume = {19},
+year = {2005}
+}
 @article{Filip2006,
 abstract = {This paper presents a comparative analysis regarding some adaptive control solutions for the excitation control of a synchronous generator. Two types of adaptive controller are taken into consideration: an adaptive fuzzy controller, respectively an adaptive self-tuning controller. The self-tuning controller is based on a dual action (on control input and also on reference signal). There are used two types of parameters estimators: a recursive least square error parameters estimator and a parameters estimator based on Givens orthogonal transformation. The designed adaptive fuzzy controller includes an adaptation mechanism of the tuning parameters (the singleton output). The algorithm can be also extended to the rest of the singletons (input singletons). Comparative studies are performed regarding the performance of a conventional fuzzy PI or PID controller and the designed adaptive fuzzy PI controller. All simulation studies concern the excitation control of a synchronous generator functioning in active power load regime. A model of a synchronous generator has been developed and used for the simulations. Also a study is made regarding the performances of the proposed adaptive fuzzy controller versus the self-tuning controller. The paper proves that the adaptive control (self-tuning or fuzzy), which is adapting to changing system characteristics, represent solutions that can improve the performances of power systems.},
 author = {Filip, Ioan and Prostean, Octavian and Szeidert, Iosif and Balas, Valentina and Prostean, Gabriela},
@@ -37,6 +51,19 @@ pages = {1587--1594},
 title = {{Comparative study regarding an adaptive fuzzy controller and a self-tuning controller with application to the excitation control of a synchronous generator}},
 volume = {5},
 year = {2006}
+}
+@article{Li1997,
+abstract = {Most of the existing algorithms for parameter estimation of damped sinusoidal signals are based only on the low-rank approximation of prediction matrix and ignore the Hankel property of the prediction matrix. In this correspondence, we propose a modified KT (MKT) algorithm exploiting both rank-deflcient and Hankel properties of the prediction matrix. Computer simulation results demonstrate that compared with the original KT algorithm and the matrix pencil algorithm, the MKT algorithm has lower noise threshold and can estimate the parameters of signal with larger damping factors. {\textcopyright} 1997 IEEE.},
+author = {Li, Ye and {Ray Liu}, K. J. and Razavilar, Javad},
+doi = {10.1109/78.554314},
+file = {:home/leonard/Desktop/Master/ma-active-noise-control/Literature/Controler/A{\_}Parameter{\_}Estimation{\_}Scheme{\_}for{\_}Damped{\_}Sinusoidal{\_}Signals{\_}Based{\_}on{\_}Low-Rank{\_}Hankel{\_}Approximation.pdf:pdf},
+issn = {1053587X},
+journal = {IEEE Transactions on Signal Processing},
+number = {2},
+pages = {481--486},
+title = {{A parameter estimation scheme for damped sinusoidal signals based on low-rank hankel approximation}},
+volume = {45},
+year = {1997}
 }
 @article{Feng1998,
 abstract = {A broadband active noise compressor (ANCP) is presented in this letter to adapt the active noise equalization (ANE) [2], [4], [5] technique suitable for practical usage. Compared to the existing broadband ANE system, the novel ANCP not only has the ability to shape the residual noise spectrum, but can also automatically adjust the residual noise power. This algorithm is analyzed in steady state and verified by computer simulations.},
@@ -65,19 +92,6 @@ title = {{Use Of Random Noise For On-Line Transducer Modeling In An Adaptive Act
 volume = {85},
 year = {1989}
 }
-@article{Li1997,
-abstract = {Most of the existing algorithms for parameter estimation of damped sinusoidal signals are based only on the low-rank approximation of prediction matrix and ignore the Hankel property of the prediction matrix. In this correspondence, we propose a modified KT (MKT) algorithm exploiting both rank-deflcient and Hankel properties of the prediction matrix. Computer simulation results demonstrate that compared with the original KT algorithm and the matrix pencil algorithm, the MKT algorithm has lower noise threshold and can estimate the parameters of signal with larger damping factors. {\textcopyright} 1997 IEEE.},
-author = {Li, Ye and {Ray Liu}, K. J. and Razavilar, Javad},
-doi = {10.1109/78.554314},
-file = {:home/leonard/Desktop/Master/ma-active-noise-control/Literature/Controler/A{\_}Parameter{\_}Estimation{\_}Scheme{\_}for{\_}Damped{\_}Sinusoidal{\_}Signals{\_}Based{\_}on{\_}Low-Rank{\_}Hankel{\_}Approximation.pdf:pdf},
-issn = {1053587X},
-journal = {IEEE Transactions on Signal Processing},
-number = {2},
-pages = {481--486},
-title = {{A parameter estimation scheme for damped sinusoidal signals based on low-rank hankel approximation}},
-volume = {45},
-year = {1997}
-}
 @article{Kim2010,
 abstract = {This research investigates a supporting structure with smart struts under a vibratory load. In the case of most rotorcraft, structure-borne noise and vibration transmitted from the gearbox contains multiple spectral elements and higher frequencies, which include gear mesh frequencies and their side bands. In order to manage this issue, significant research have been devoted to active smart struts which have tunable stiffness such that a higher level of attenuation is possible. However, present techniques on active control are restricted mostly to the control of single or multiple sinusoids and thus these are not applicable to manage modulated and multi-spectral signals. Therefore, enhanced control algorithms are required in order to achieve simultaneous attenuation of gear mesh frequencies and their side bands. Proposed algorithms employing two nonlinear methods and one model-based technique are examined in this study. Their performance is verified by comparing with conventional algorithms. Moreover, these algorithms are implemented to exhibit whether they are feasible to narrowband or broadband control through experiments with a single smart strut. Novel methodologies are expected to be applied to several active vibration and noise control practices such as vehicles and other engineering structures. {\textcopyright} 2010 Copyright SPIE - The International Society for Optical Engineering.},
 author = {Kim, Byeongil and Washington, Gregory N. and Singh, Rajendra},
@@ -91,20 +105,6 @@ pages = {76450R},
 title = {{Design and analysis of supporting structure with smart struts for active vibration isolation}},
 volume = {7645},
 year = {2010}
-}
-@article{Bodson2005,
-abstract = {The paper reviews available methods for the rejection of periodic disturbances. Such disturbances are often encountered in active noise and vibration control, due to rotating machinery. The emphasis of the paper is on feedback control problems where reference sensors are not available. The case where the frequency of the disturbance is known is considered first. Two sets of algorithms are discussed: one based on the internal model principle of feedback control theory, and the second based on adaptive feedforward cancellation. An interesting observation is that algorithms originating from both approaches can be shown to be equivalent under certain conditions. When the frequency of the disturbance is unknown, an intuitive approach consists in combining a method for the rejection of disturbances of known frequency with a frequency estimator. Alternatively, one may seek to develop a stable adaptation mechanism so that the disturbance is cancelled asymptotically. While algorithms can be designed to adapt to plant and disturbance parameters, the most successful approaches use some limited plant information to adapt the magnitude, frequency, and phase parameters of the control signal. Applications are discussed throughout the paper. Copyright {\textcopyright} 2004 John Wiley {\&} Sons, Ltd.},
-author = {Bodson, Marc},
-doi = {10.1002/acs.844},
-file = {:home/leonard/Desktop/Master/ma-active-noise-control/Literature/Controler/Rejection{\_}of{\_}Periodic{\_}Disturbances{\_}of{\_}Unknown{\_}and{\_}Time{\_}Varying{\_}Frequency.pdf:pdf},
-issn = {08906327},
-journal = {International Journal of Adaptive Control and Signal Processing},
-keywords = {Active noise control,Active vibration control,Adaptive algorithms,Disturbance rejection,Periodic signals,Phase-locked loops},
-number = {2-3},
-pages = {67--88},
-title = {{Rejection of periodic disturbances of unknown and time-varying frequency}},
-volume = {19},
-year = {2005}
 }
 @article{Harris1991,
 author = {Harris, Cyril M},
