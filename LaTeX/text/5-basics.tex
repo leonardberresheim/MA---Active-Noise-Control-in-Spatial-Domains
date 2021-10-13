@@ -1,0 +1,43 @@
+% -----------------------------------------------------------------------------
+% Fundamentals
+% -----------------------------------------------------------------------------
+\chapter{Fundamentals}
+\label{chap:fundamentals}
+
+\section{Simulating an acoustic source in 3D - space}
+\subsection{The Image Model}
+The image model is a method that allows the computation of a source-to-receiver acoustic transfer function in an enclosed 3D-space. Within this method an acoustic wave produced by a source, when crossing a wall, produces an image which then itself is considered as a source for further computation. In a room with several walls each image then also produces an image\cite{Allen1979}
+\\\\
+The exact solution to the wave equation in a rectangular, rigid-wall, room is given by the rooms impulse response function also known as the time domain Green's function\cite{Allen1979}:
+\begin{equation}
+    p(t,\mathbf{X},\mathbf{X'})=\sum_{p=1}^8\sum_{r=-\infty}^\infty\frac{\delta[t-\frac{|\mathbf{R_p}+\mathbf{R_r}|}{c}]}{4\pi|\mathbf{R_p}+\mathbf{R_r}|},
+\end{equation}
+where\\ 
+$c=$ the speed of sound,\\
+$\mathbf{R_p}$ represents the eight vectors given by the eight permutations over $\pm$ of
+\begin{equation}
+    \mathbf{R_p}=(x\pm x', y\pm y', z\pm z')
+\end{equation}
+r is the integer vector triplet $(n,l,m)$, and
+\begin{equation}
+    \mathbf{R_r}=2(nL_x, lL_y, mL_z),
+\end{equation}
+where $(L_x, L_y, L_z)$ are the room dimensions.
+\\
+\\
+In case of non-rigid walls, the solution to the wave equation becomes more complicated and is only conceivable under the assumption that the wall impedance is proportional to $sec(\theta)$, where $\theta$ is the angle incidence of a plane wave with respect to the wall normal, resulting in the Sabine energy absorption coefficient $\alpha$ for a uniform reflection coefficient $\beta$ on a given wall of the form\cite{Allen1979}:
+\begin{equation}
+    \alpha=1-\beta^2.
+\end{equation}
+The modified room impulse response transforms into:
+\begin{equation}
+    p(t,\mathbf{X},\mathbf{X'})=\sum_{p=1}^8\sum_{r=-\infty}^\infty
+    \beta_{x1}^{|n-q|}\beta_{x2}^{|n|}\beta_{y1}^{|i-j|}\beta_{y2}^{|i|}\beta_{z1}^{|m-k|}\beta_{z2}^{|m|}
+    \frac{\delta[t-\frac{|\mathbf{R_p}+\mathbf{R_r}|}{c}]}{4\pi|\mathbf{R_p}+\mathbf{R_r}|},
+\end{equation}
+where\\
+$p=(q,j,k)$ and $r=(n,l,m)$ are integer 3-vector,\\
+$\mathbf{R_p}$ is now expressed in terms of $p$ as
+\begin{equation}
+    \mathbf{R_p}=(x-x'+2qx', y-y'+2jy,z-z'+2kz').
+\end{equation}
