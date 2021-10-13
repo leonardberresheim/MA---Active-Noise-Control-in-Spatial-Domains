@@ -9,31 +9,13 @@
     \begin{itemize}
         \item Simulate an active noise control system. 
     \begin{itemize}
-        \item Simulate the dispersion of an acoustical source in a 3D space
-        \item Simulate a simple ANC-(feedback) system (1 secondary source, 1 error microphone) using existing algorithms
-        \item Simulate and advanced ANC system using existing algorithms
+        \item Simulate the dispersion of an acoustical source in a 3D space.
+        \item Model a reference/microphone.
+        \item Simulate a simple ANC-(feedback) system (1 secondary source, 1 error microphone) using existing algorithms.
+        \item Simulate an advanced ANC system using existing algorithms.
     \end{itemize}
-        \item Research the possible use of new algorithm i.e. genetic algorithms or Convolutional Neural Networks
+        \item Research the possible use of newer/more complex controlling algorithms i.e. genetic algorithms or Convolutional Neural Networks for ANC - optimisation.
 \end{itemize}
 
 
 
-\large{Feedforward System}\\
-For a feedforward system, the time it takes for the primary acoustic or vibration signal to travel from the reference sensor location to the error sensor location, must be greater than the processing time of the controller, plus the time delay associated with control source electro-acoustics, plus the time taken for the signal to travel from the control sources to the error sensors.\cite{Fuller1995}
-
-Unfortunately, the physical acoustic or vibration system to
-be controlled rarely remains the same for very long (as even small changes in temperature or
-flow speed change the speed of sound, resulting in phase errors between the desired and
-actual control signals).\cite{Fuller1995}
-
-Problems can be caused by the reference signal being contaminated by the control source that is transmitted upstream.\cite{Fuller1995}
-
-When designing a feedforward system it is necessary to provide on-line system identification of the electro-acoustic transfer functions of the control sources and error microphones and the acoustic delay between them or else design a complex controller that does not need this information. This latter alternative could require the use of complex filter structures such as neural networks or non-linear adaptive algorithms such as genetic algorithms.\cite{Fuller1995}
-
-The runtime of a genetic algorithms is dependant on the run-time of it's fitness function.\cite{https://www.youtube.com/watch?v=uQj5UNhCPuo}
-
-\large{Feedback System}\\
-Feedback systems are used to reduce the transient response of systems, thus returning the system to its unperturbed state as quickly as possible.\cite{Fuller1995}
-
-
-A feedforward system should be used when it's possible to get a suitable reference signal, as the performance of feedforward systems is, in general, superior to feedback systems \cite{Fuller1995}
