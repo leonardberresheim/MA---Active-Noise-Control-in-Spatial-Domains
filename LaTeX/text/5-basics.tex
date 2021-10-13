@@ -3,8 +3,17 @@
 % -----------------------------------------------------------------------------
 \chapter{Fundamentals}
 \label{chap:fundamentals}
+\section{Spherical Harmonics}
 
 \section{Simulating an acoustic source in 3D - space}
+Other Methods for simulating rooms acoustics among others:
+\begin{itemize}
+    \item ray/beam tracing
+    \item boundary and finite element methods
+    \item digital waveguide meshes
+    \item spatial sound decomposition based methods
+The image source method still remains a sought-after technique.\cite{Samarasinghe2018}
+\end{itemize}
 \subsection{The Image Model}
 The image model is a method that allows the computation of a source-to-receiver acoustic transfer function in an enclosed 3D-space. Within this method an acoustic wave produced by a source, when crossing a wall, produces an image which then itself is considered as a source for further computation. In a room with several walls each image then also produces an image\cite{Allen1979}
 \\\\
@@ -41,3 +50,7 @@ $\mathbf{R_p}$ is now expressed in terms of $p$ as
 \begin{equation}
     \mathbf{R_p}=(x-x'+2qx', y-y'+2jy,z-z'+2kz').
 \end{equation}
+
+
+\subsection{Spherical Harmonics Based Image Source Method}
+The image source method was developed under the assumption that both source and receiver are omnidirectional. As loudspeaker are inherently directional and the use of directional microphones is increasing it is expedient to use a different approach. By modeling the transducers in the spherical harmonics domain with a more realistic directivity pattern it is possible to achieve a more accurate simulation of room acoustics.\cite{Samarasinghe2018}
