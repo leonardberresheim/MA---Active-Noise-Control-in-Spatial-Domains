@@ -4,7 +4,26 @@
 \chapter{Fundamentals}
 \label{chap:fundamentals}
 \section{Spherical Harmonics}
-
+"The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
+to decompose any arbitrary function defined on the sphere."\cite{Samarasinghe2018}\\
+A homogeneous incident wave field $v(\mathbf{x},k)$ observed at $\mathbf{x}$ can thus be decomposed into\cite{Zhang2019}:
+\begin{equation}
+    v(\mathbf{x},k)=\sum_{u=0}^\infty \sum_{m=-u}^u\beta_{um}(k)j_u(kr)\Upsilon_{um}(\Phi_x,\Psi_x),
+\end{equation}
+for any location with spherical coordinates $\mathbf{x}=(x,\Phi_x,\Psi_x)$\\
+where\\
+$k=2\pi f/c=$ the wave number,\\
+$f=$ the frequency,\\
+$c=$ the speed of sound,\\
+$j_u(.)=$the spherical Bessel function of order $u$,\\
+$\beta_um(k)=$ the wave field in the wave domain.\\ 
+$\Upsilon_{um}(.)=$ the spherical harmonics,\\
+The spherical harmonics function of order $n$ and mode $m$ is defined by\cite{Samarasinghe2018}
+\begin{equation}
+    \Upsilon_{um}(\Phi_x,\Psi_x) = \mathbf{P}_{n|m|}(cos(\Phi_x))\frac{1}{\sqrt{2\pi}}e^{im\Psi_x},
+\end{equation}
+where\\
+$\mathbf{P}_{n|m|}(cos(\Phi_x))=$ the associated Legendre polynomials.
 \section{Simulating an acoustic source in 3D - space}
 Other Methods for simulating rooms acoustics among others:
 \begin{itemize}
@@ -14,8 +33,9 @@ Other Methods for simulating rooms acoustics among others:
     \item spatial sound decomposition based methods
 The image source method still remains a sought-after technique.\cite{Samarasinghe2018}
 \end{itemize}
-\subsection{The Image Model}
-The image model is a method that allows the computation of a source-to-receiver acoustic transfer function in an enclosed 3D-space. Within this method an acoustic wave produced by a source, when crossing a wall, produces an image which then itself is considered as a source for further computation. In a room with several walls each image then also produces an image\cite{Allen1979}
+
+\subsection{Image Source Method}
+The image model is a method that allows the computation of a source-to-receiver acoustic transfer function in an enclosed 3D-space. Within this method an acoustic wave produced by a source, when crossing a wall, produces an image which then itself is considered as a source for further computation. In a room with several walls each image then also produces an image.\cite{Allen1979}
 \\\\
 The exact solution to the wave equation in a rectangular, rigid-wall, room is given by the rooms impulse response function also known as the time domain Green's function\cite{Allen1979}:
 \begin{equation}
@@ -53,4 +73,11 @@ $\mathbf{R_p}$ is now expressed in terms of $p$ as
 
 
 \subsection{Spherical Harmonics Based Image Source Method}
-The image source method was developed under the assumption that both source and receiver are omnidirectional. As loudspeaker are inherently directional and the use of directional microphones is increasing it is expedient to use a different approach. By modeling the transducers in the spherical harmonics domain with a more realistic directivity pattern it is possible to achieve a more accurate simulation of room acoustics.\cite{Samarasinghe2018}
+The image source method was developed under the assumption that both source and receiver are omnidirectional. As loudspeaker are inherently directional and the use of directional microphones is increasing it is expedient to use a different approach. By modeling the transducers in the spherical harmonics domain with a more realistic directivity pattern it is possible to achieve a more accurate simulation of room acoustics.\cite{Samarasinghe2018}\\
+The spherical harmonics based image source method also known as the generalised image source method is given by
+\begin{equation}
+    \mathbf{P}(k,\mathbf{x}_s,\mathbf{z}^{(r)} = \sum_{v=0}^V\sum_{u=-v}^v\sum_{n=0}^N\sum_{m=-n}^n\sum_{\mathbf{p}=0}^1\sum_{\mathbf{r}=-\infty}^\infty\beta_{nm}(k)\\
+    \times (-1)^...
+\end{equation}
+\\
+\\The advantages of the image source method are its relatively simple algorithmic implementation, its high degree of flexibility - many parameter can be set within the software - as well as its ability to generate a good approximation of the room impulse response. It nevertheless comes with its impediments such as its restriction to rectangular rooms and it's inability to model diffraction.\cite{Samarasinghe2018}
