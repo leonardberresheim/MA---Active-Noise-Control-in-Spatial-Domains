@@ -3,6 +3,42 @@
 % -----------------------------------------------------------------------------
 \chapter{Fundamentals}
 \label{chap:fundamentals}
+
+\section{Propagation of sound}
+For now we assume our acoustic to source to be a point source and thus produce a spherical wave.
+\subsection{Wave Equation}
+The wave equation or the equation of propagation of acoustic pressure is given by
+\begin{equation}
+    \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \nabla^2p
+\end{equation}
+where\\
+$c$ is the speed of sound,\\
+$p$ is the acoustic pressure deviation,\\
+$\nabla$ is the Laplace operator.\\
+in Cartesian coordinates $(x,y,z)$:
+\begin{equation}
+    \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \frac{\partial^2p}{\partial x^2} + \frac{\partial^2p}{\partial y^2} + \frac{\partial^2p}{\partial z^2},
+\end{equation}
+in Polar coordinates $(r,\theta, z)$:
+\begin{equation}
+    \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \frac{\partial^2p}{r^2\partial \theta^2} + \frac{\partial^2p}{\partial r^2} + \frac{1}{r}\frac{\partial^2p}{\partial r} + \frac{\partial^2p}{\partial z^2},
+\end{equation}
+\subsection{Spherical Wave Equation}
+\subsection{Pressure wave}
+The pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979} is:
+\begin{equation}
+    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{R}{c}-t)}}{4\pi R},
+\end{equation}
+where\\
+$P=$ pressure,\\
+$\omega=2\pi f$,\\
+$f=$ frequency,\\
+$t=$ time,\\
+$\mathbf{R}=|\mathbf{X}-\mathbf{X}'|$,\\
+$\mathbf{X}=$ vector talker location $(x,y,z)$,\\
+$\mathbf{X}=$ vector microphone location $(x',y',z')$,\\
+$i=\sqrt{-1}$,\\
+$c=$ speed of sound.
 \section{Spherical Harmonics}
 "The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
 to decompose any arbitrary function defined on the sphere."\cite{Samarasinghe2018}\\
@@ -79,5 +115,6 @@ The spherical harmonics based image source method also known as the generalised 
     \mathbf{P}(k,\mathbf{x}_s,\mathbf{z}^{(r)} = \sum_{v=0}^V\sum_{u=-v}^v\sum_{n=0}^N\sum_{m=-n}^n\sum_{\mathbf{p}=0}^1\sum_{\mathbf{r}=-\infty}^\infty\beta_{nm}(k)\\
     \times (-1)^...
 \end{equation}
+
 \\
 \\The advantages of the image source method are its relatively simple algorithmic implementation, its high degree of flexibility - many parameter can be set within the software - as well as its ability to generate a good approximation of the room impulse response. It nevertheless comes with its impediments such as its restriction to rectangular rooms and it's inability to model diffraction.\cite{Samarasinghe2018}
