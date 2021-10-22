@@ -1,14 +1,15 @@
-function point_source(p_source, p_receiver, frequency)
+function point_source(p_source, p_receiver, frequency, size_param, spacing)
 
 
     % =========================================================================
     % SIMULATION
     % =========================================================================
-
+    
+    
     % create the computational grid
-    Nx = 128;           % number of grid points in the x (row) direction
-    Ny = 128;           % number of grid points in the y (column) direction
-    dx = 50e-3/Nx;    	% grid point spacing in the x direction [m]
+    Nx = size_param;           % number of grid points in the x (row) direction
+    Ny = size_param;           % number of grid points in the y (column) direction
+    dx = spacing;    	% grid point spacing in the x direction [m]
     dy = dx;            % grid point spacing in the y direction [m]
     kgrid = kWaveGrid(Nx, dx, Ny, dy);
 
@@ -23,7 +24,7 @@ function point_source(p_source, p_receiver, frequency)
     % define a multiple source point
     source.p_mask = zeros(Nx, Ny);
     for i = 1:size(p_source,1)
-        source.p_mask(p_source(i,1) + 64, p_source(i,2) + 64) = 1;
+        source.p_mask(p_source(i,1) + (Nx/2), p_source(i,2) + (Ny/2)) = 1;
     end
 
 
@@ -37,7 +38,7 @@ function point_source(p_source, p_receiver, frequency)
 
     % define a single sensor point
     sensor.mask = zeros(Nx, Ny);
-    sensor.mask(p_receiver(1)+64, p_receiver(2)+64) = 1;
+    sensor.mask(p_receiver(1)+(Nx/2), p_receiver(2)+(Ny/2)) = 1;
 
     % define the acoustic parameters to record
     sensor.record = {'p', 'p_final'};

@@ -13,10 +13,12 @@
 
 function p_source_and_image = image_source(p_source, p_wall)
     % Prealocate space
-    p_source_and_image = zeros(size(p_source,1)*(size(p_wall,1)+1),2);
+    %p_source_and_image = zeros(size(p_source,1)*(size(p_wall,1)+1),2);
+    idx = 1;
     for j=1:size(p_source,1)     
         P = p_source(j,:);
-        p_source_and_image(1,:) = P;
+        p_source_and_image(idx,:) = P;
+        idx = idx +1;
         for i=1:size(p_wall,1)
             R = [p_wall(i,1),p_wall(i,2)];
             Q = [p_wall(i,3),p_wall(i,4)];
@@ -36,7 +38,11 @@ function p_source_and_image = image_source(p_source, p_wall)
             px_1 = P(1) - 2 * A_1 * D;
             py_1 = P(2) - 2 * B_1 * D;
 
-            p_source_and_image(j*(i+1),:) = [px_1 py_1];
+            p_source_and_image(idx,:) = [px_1 py_1];
+            idx = idx +1;
         end
     end
+    % Some refelction produce an already existing image or even the source.
+    % These can be removed.
+    p_source_and_image = unique(p_source_and_image,'rows');
 end
