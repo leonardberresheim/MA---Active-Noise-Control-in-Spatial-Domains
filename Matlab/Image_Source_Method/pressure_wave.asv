@@ -1,0 +1,32 @@
+%% AUTHOR    : Leonard Berresheim 
+%% $DATE     : 27-Oct-2021 18:02:00 $ 
+% PRESSURE_WAVE return the pressure deviation between a point source and a
+% receiver for a given frequency.
+%   [p] = PRESSURE_WAVE(x0,x1,fe,t,c) 
+%   Eingabe 
+%       x0      (1 x 2) source point  
+%       x1      (1 x 2) receiver point  
+%       fe      frequency  
+%       t       (1 x n) time
+%       c       speed of sound
+%       var_t   boolean 
+%   Ausgabe 
+%       in_p    (1 x n) input pressure
+%       out_p   (1 x n) output pressure  
+%
+function [in_p, out_p] = pressure_wave(x0,x1,fe, t, c) 
+    p = zeros(1,length(t));
+    r = norm(X_source - X_receiver);
+    omega = 2*pi*f;
+
+    input_pressure = imag(exp(-1i*omega.*t));
+
+    for i=1:length(t)
+        if(t(i) < r/c)
+            p(i) = 0;
+        else
+            p(i) = imag(exp(1i*omega*(r/c-t(i)))/(4*pi*r));
+        end
+    end
+
+end 

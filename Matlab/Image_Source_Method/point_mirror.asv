@@ -1,0 +1,14 @@
+%% AUTHOR    : Leonard Berresheim 
+%% $DATE     : 28-Oct-2021 15:47:13 $ 
+% POINT_MIRROR 
+%   [M] = POINT_MIRROR(A,B,C,D,P) 
+%   Eingabe 
+%       a,b,c,d   Plane equation coefficient 
+%       P      (1 x 3) Source point
+%   Ausgabe 
+%       M      (1 x 3) Mirror point  
+% 
+function [M] = point_mirror(a,b,c,d,P) 
+    k = (-a*P(1)-b*P(2)-c*P(
+    M(1) = 2 * (a*k+P(1)) - P(1);
+end 
