@@ -33,19 +33,9 @@ For now we assume the acoustic source to be a point source, it can thus be repre
     \frac{\partial^2rp(r,t)}{\partial r^2} = \frac{1}{c^2}\frac{\partial^2rp(r,t)}{\partial t^2}.
 \end{equation}
 \subsubsection{General Solution to the Spherical Wave Equation}
-A general solution to the Wave equation is given by
+A general solution to the Wave equation is given by the pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979}:
 \begin{equation}
-    p(k,r) = \frac{e^{ikr}}{4\pi r},
-\end{equation}
-where\\
-$r$ is the distance from origin (radius),\\
-$k=\frac{2\pi f}{c}$ is the wave number,\\
-$f$ is the frequency.
-
-\subsection{Pressure wave}
-The pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979} is:
-\begin{equation}
-    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{R}{c}-t)}}{4\pi R},
+    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{\mathbf{R}}{c}-t)}}{4\pi \mathbf{R}},
 \end{equation}
 where\\
 $P=$ pressure,\\
