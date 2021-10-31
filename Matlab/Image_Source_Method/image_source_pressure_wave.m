@@ -19,9 +19,9 @@
 % 
 function [tot_output_pressure] = image_source_pressure_wave(S,R,Lx,Ly,Lz,t,c,f,order) 
     % Deklaration of points forming the walls
-    A = [0 0 0; 0 0 0; Lx 0 0; 0 Ly 0;];%[0 0 0; 0 0 0; 0 0 0; Lx 0 0];%; 0 Ly 0; 0 0 Lz];
-    B = [0 1 0; 0 0 1; Lx 1 0; 1 Ly 0;];%[0 1 0; 0 1 0; 0 0 1; Lx 1 0];%; 1 Ly 0; 1 0 Lz];
-    C = [0 0 1; 1 0 0; Lx 0 1; 0 Ly 1];%[1 0 0; 0 0 1; 1 0 0; Lx 0 1];%; 0 Ly 1; 0 1 Lz];
+    A = [0 0 0; 0 0 0; Lx 0 0; 0 Ly 0; 0 0 0; 0 0 Lz];
+    B = [0 1 0; 0 0 1; Lx 1 0; 1 Ly 0; 0 1 0; 1 0 Lz];
+    C = [0 0 1; 1 0 0; Lx 0 1; 0 Ly 1; 1 0 0; 0 1 Lz];
     % Conversion of points into the plane quation coefficients of the walls
     n_walls = size(A,1);
     wall = zeros(n_walls,4);
