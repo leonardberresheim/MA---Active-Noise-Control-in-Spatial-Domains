@@ -9,12 +9,17 @@
 %       M      (n x 3) Mirror point  
 % 
 function [M] = point_mirror(plane, P) 
-    M = zeros(size(plane,1),3);
-    for i=1:size(M,1)
-        k = (-plane(i,1)*P(1)-plane(i,2)*P(2)-plane(i,3)*P(3)-plane(i,4)) / (plane(i,1)^2+plane(i,2)^2+plane(i,3)^2);
-        M(i,1) = 2 * (plane(i,1)*k+P(1)) - P(1);
-        M(i,2) = 2 * (plane(i,2)*k+P(2)) - P(2);
-        M(i,3) = 2 * (plane(i,3)*k+P(3)) - P(3);
+    M_tmp = zeros(size(plane,1)*size(P,1),3);
+    x = 1;
+    for j=1:size(P,1)
+        for i=1:size(plane,1)
+            k = (-plane(i,1)*P(j,1)-plane(i,2)*P(j,2)-plane(i,3)*P(j,3)-plane(i,4)) / (plane(i,1)^2+plane(i,2)^2+plane(i,3)^2);
+            M_tmp(x,1) = 2 * (plane(i,1)*k+P(j,1)) - P(j,1);
+            M_tmp(x,2) = 2 * (plane(i,2)*k+P(j,2)) - P(j,2);
+            M_tmp(x,3) = 2 * (plane(i,3)*k+P(j,3)) - P(j,3);
+            x = x+1;
+        end
     end
+    M = M_tmp;
 end 
 
