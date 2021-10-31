@@ -1,39 +1,14 @@
 clearvars;
 
-wall = zeros(6,4);
-A = zeros(6,3);
-B = zeros(6,3);
-C = zeros(6,3);
-Lx = 3;
-Ly = 4;
-Lz = 2;
-A = [0 0 0; 0 0 0; 0 0 0; Lx 0 0; 0 Ly 0; 0 0 Lz];
-B = [0 1 0; 0 1 0; 0 0 1; Lx 1 0; 1 Ly 0; 1 0 Lz];
-C = [1 0 0; 0 0 1; 1 0 0; Lx 0 1; 0 Ly 1; 0 1 Lz];
-for i=1:6
-   wall(i,:) = plane_equation(A(i,:),B(i,:),C(i,:)); 
-end
 
+Lx = 5;
+Ly = 5;
+Lz = 5;
+t = 0:0.00001:0.1;
+c = 343;
+f = 2000;
+
+R = [4,4,1];
 P = [1,1,1];
-M = point_mirror(wall,P);
 
-for i=1:6
-   disp(['Plane((' num2str(A(i,1)) ',' num2str(A(i,2)) ',' num2str(A(i,3)) '),(' num2str(B(i,1)) ',' num2str(B(i,2)) ',' num2str(B(i,3) '),(' C(i,1) ',' C(i,2) ',' C(i,3) '))']);
-end
-
-
-
-
-% t = 0:0.001:1;
-% c = 343;
-% f = 20;
-% X_source = [0,0]; % Source coordinates
-% X_receiver = [0,50]; % Receiver coordinates
-% 
-% [input_pressure, p] = pressure_wave(X_source, X_receiver, f, t, c);
-% 
-% subplot(2,1,1)
-% plot(t,input_pressure)
-% 
-% subplot(2,1,2)
-% plot(t,p)
+tot_output_pressure = image_source_pressure_wave(

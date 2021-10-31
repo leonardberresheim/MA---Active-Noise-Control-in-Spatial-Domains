@@ -19,8 +19,8 @@ function [in_p, out_p] = pressure_wave(x0,x1,fe, t, c)
     omega = 2*pi*fe;
 
     in_p = imag(exp(-1i*omega*t));
-    for j=1:size(x1,1)
-        r = norm(x0 - x1(j,:));
+    for j=1:size(x0,1)
+        r = norm(x0(j,:) - x1);
         for i=1:length(t)
             if(t(i) < r/c)
                 out_p(j,i) = 0;
