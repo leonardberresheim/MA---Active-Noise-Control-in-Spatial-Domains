@@ -1,6 +1,6 @@
 %% AUTHOR    : Leonard Berresheim 
 %% $DATE     : 29-Oct-2021 08:38:39 $ 
-% IMAGE_SOURCE_METHOD 
+% IMAGE_SOURCE_METHOD implements the image order
 %   [P_M] = IMAGE_SOURCE_METHOD(P_S,WAL) 
 %   Eingabe 
 %       P_s      (1 x 3) Source Point  

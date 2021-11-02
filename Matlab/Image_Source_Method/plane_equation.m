@@ -1,6 +1,6 @@
 %% AUTHOR    : Leonard Berresheim 
 %% $DATE     : 28-Oct-2021 15:28:19 $ 
-% PLANE_EQUATION return the coefficients for the plane give by 3 points 
+% PLANE_EQUATION returns the coefficients for the plane given by 3 points 
 %   [A,B,C,D] = PLANE_EQUATION(A,B,C) 
 %   Eingabe 
 %       A,B,C   (1 x 3) Points forming plane    
