@@ -31,21 +31,22 @@ function [M, post_beta] = point_mirror(plane, P, alpha, pre_beta)
     end
     % Remove duplicate rows in M
     %M = unique(M_tmp, 'rows', 'stable');
-    M = P;
-    post_beta = pre_beta;
-    for i=1:size(M_tmp,1)
-        isPresent = false;
-        for j=1:size(M,1)
-           if(M(j,:) == M_tmp(i,:))
-              isPresent = true;
-              break;
-           end
-        end
-        if(isPresent == false)
-           M = [M; M_tmp(i,:)];
-           post_beta = [post_beta; post_beta_tmp(i)];
-        end
-    end
+%     M = P;
+%     post_beta = pre_beta;
+%     for i=1:size(M_tmp,1)
+%         isPresent = false;
+%         for j=1:size(M,1)
+%            if(M(j,:) == M_tmp(i,:))
+%               isPresent = true;
+%               break;
+%            end
+%         end
+%         if(isPresent == false)
+%            M = [M; M_tmp(i,:)];
+%            post_beta = [post_beta; post_beta_tmp(i)];
+%         end
+%     end
+    M = M
     
 end 
 

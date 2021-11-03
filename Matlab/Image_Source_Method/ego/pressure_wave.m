@@ -15,22 +15,25 @@
 %       out_p      (m x n) output pressure  
 %       out_p_abs  (m x n) output pressure for non-rigid walls
 %
-function [in_p, out_p, out_p_abs] = pressure_wave(x0,x1,fe, t, c,beta) 
-    out_p = zeros(size(x1,1),length(t));
-    out_p_abs = zeros(size(x1,1),length(t));
+function [in_p, out_p, out_p_abs] = pressure_wave(x0,x1,fe, t, c,beta, spacing) 
+    out_p = zeros(size(x0,1),length(t));
+    out_p_abs = zeros(size(x0,1),length(t));
     
     omega = 2*pi*fe;
 
-    in_p = imag(exp(-1i*omega*t));
+    in_p = 2*imag(exp(-1i*omega*t));
     for j=1:size(x0,1)
-        r = norm(x0(j,:) - x1);
-        for i=1:length(t)
+        r = spacing*norm(x0(j,:) - x1);
+        for i=39:length(t)
+            ti = t(i);
+            rc = r/c;
             if(t(i) < r/c)
                 out_p(j,i) = 0;
             else
-                out_p(j,i) = imag(exp(1i*omega.*(r/c-t(i)))/(4*pi*r));
-                out_p_abs(j,i) = beta(j)*out_p(j,i);
+                out_p(j,i) = imag(exp(1i*omega*(r/c-t(i)))/(4*pi*r));
             end
+            oupab = beta(j)*out_p(j,i);
+            out_p_abs(j,i) = beta(j)*out_p(j,i);
         end
 
     end
