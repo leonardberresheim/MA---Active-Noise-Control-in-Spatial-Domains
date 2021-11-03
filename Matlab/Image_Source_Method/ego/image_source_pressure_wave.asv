@@ -19,6 +19,10 @@
 %       tot_output_pressure      (1 x n)  pressure deviation at receiver
 % 
 function [tot_output_pressure] = image_source_pressure_wave(S,R,Lx,Ly,Lz,t,c,f,order,alpha) 
+    % Convert source and receiver point in relation to a coordiante system
+    % originating in the middle of the room
+    S = S + (Lx/s);
+    R = R + (LX/2)
     % Deklaration of points forming the walls
     A = [0 0 0; 0 0 0; Lx 0 0; 0 Ly 0; 0 0 0; 0 0 Lz];
     B = [0 1 0; 0 0 1; Lx 1 0; 1 Ly 0; 0 1 0; 1 0 Lz];
