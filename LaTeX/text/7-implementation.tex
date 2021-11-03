@@ -37,6 +37,21 @@ The resulting pressure wave deviation can be seen in figure \ref{fig:ism_4_2_mat
 Adding a ceiling and a floor we get even more images which leads to a very busy 3D-Model in figure \ref{fig:ism_4_2_2_geo}\\
 \begin{figure}
     \centerline{\includegraphics[width=1\textwidth,keepaspectratio]{LaTeX/images/geometrie/ism_4_walls_2_order_2.png}}
-    \caption{Source and receiver in room with 4 walls and reflections of order 1}
-    \label{fig:ism_4_2_geo}
+    \caption{Source and receiver in room with 4 walls + ceiling + floor and reflections of order 1}
+    \label{fig:ism_4_2_2_geo}
+\end{figure}
+And the pressure deviation at receiver as seen in figure \ref{fig:ism_4_2_2_mat}
+\begin{figure}
+
+    \centerline{\includegraphics[width=1.5\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_2_order_2.png}}
+    \caption{Pressure deviation perceived at receiver emitted by source and source images}
+    \label{fig:ism_4_2_2_mat}
+\end{figure}
+
+After including absorption coefficients for each wall the output can be seen in figure \ref{fig:ism_4_2_2_mat_abs}
+\begin{figure}
+
+    \centerline{\includegraphics[width=1.5\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_2_order_2_abs.png}}
+    \caption{Pressure deviation perceived at receiver emitted by source and source images considering non-rigid walls}
+    \label{fig:ism_4_2_2_mat_abs}
 \end{figure}
