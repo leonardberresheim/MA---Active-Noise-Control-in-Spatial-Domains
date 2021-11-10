@@ -26,6 +26,7 @@ in Polar coordinates $(r,\theta, z)$:
 \begin{equation}
     \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \frac{\partial^2p}{r^2\partial \theta^2} + \frac{\partial^2p}{\partial r^2} + \frac{1}{r}\frac{\partial^2p}{\partial r} + \frac{\partial^2p}{\partial z^2},
 \end{equation}
+
 \subsection{Spherical Wave Equation}
 
 For now we assume the acoustic source to be a point source, it can thus be represented as a spherical wave. Furthermore we assume "spherical symmetry" i.e. the pressure and particle velocity equal for the same $r$, the distance from the 'origin' of the spherical wave. The wave equation for the spherically symmetric wave is\cite{Waves2004}:
@@ -47,6 +48,10 @@ $\mathbf{X}=$ vector talker location $(x,y,z)$,\\
 $\mathbf{X}=$ vector microphone location $(x',y',z')$,\\
 $i=\sqrt{-1}$,\\
 $c=$ speed of sound.
+
+This equation fails at $r = 0$. Nevertheless some source is required to supply the energy being carried away however the wave equation does not contain a term representing this energy source.
+
+
 \section{Spherical Harmonics}
 "The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
 to decompose any arbitrary function defined on the sphere."\cite{Samarasinghe2018}\\
