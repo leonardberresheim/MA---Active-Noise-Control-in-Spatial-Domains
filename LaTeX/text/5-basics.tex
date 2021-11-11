@@ -5,20 +5,52 @@
 \label{chap:fundamentals}
 
 \section{Propagation of sound}
-An acoustic wave is essentially a change in pressure. A local pressure change causes the surrounding medium to compress which in turn causes pressure changes thus leading to the propagation of an acoustic wave.
-
+An acoustic wave is essentially a change in pressure. A local pressure change causes the surrounding medium to compress which in turn causes pressure changes thus leading to the propagation of an acoustic wave. This compression leads to a displacement of the particles in the medium.\\The linear wave equation can be used to describe such an acoustic wave. In reality the acoustic wave equation is non linear but for this application the linear approximation to the wave equation is a good model.\cite{Acoustic}\\
+\subsection{Linearity}
+Viewing acoustics as a linear phenomenon is very appealing due to the principle of superposition roughly depicted by following relation
+\begin{equation}
+    \mathcal{L}(af_1+bf_2) = a\mathcal{L}(f_1) + b\mathcal{L}(f_2),
+\end{equation}
+where
+$f_1$ and $f_2$ are two causes,\\
+$\mathcal{L}(f)$ is the set of possible computational steps that predict the effect of $f$.\\
+Thus a complex sound field stemming from multiple sources can be regarded as the sum of sound fields produced by each source individually. In the same way a complex wave can be analyzed by each frequency separately. Nevertheless this acoustic model only represents an approximation.\cite{}
+\\
+The following three laws are used to develop the wave equation.
+\subsection{Equation of State}
+The equation of state relates changes in pressure and density. It is determined by thermodynamic properties and dependant upon the material (e.g. air):
+\begin{equation}
+    p = \mathbf{B}s = \rho_0c^2s,
+\end{equation}
+where 
+$\mathbf{B}=\rho_0(\frac{\partial P}{\partial \rho})_{\rho_0}$ is the adiabatic bulk modulus,\\
+$\rho$ in $kg/m³$ is the density,
+$\rho_0$ is the undisturbed density,\\
+$p$ in $Pascal$ where $1Pa = 1 N/m^2 = 1kg/s^2/m$ is the pressure,\\
+$P$ is the instantaneous pressure,\\
+$c$ in $m/s$ is the speed of sound,\\
+$s = \frac{\rho-\rho_0}{\rho_0}$ is the condensation 
+\subsection{Equation of Continuity}
+The equation of continuity depicts the conservation of mass:
+\begin{equation}
+    \frac{\partial\rho}{\partial t} = -\rho_0\nabla\cdot\Vec{u},
+\end{equation}
+where\\
+$t$ is time,\\
+$\nabla$ is the Laplace operator.\\
+$\Vec{u} = \frac{\partial\Vec{\xi}}{\partial t}$ is the particle velocity,\\
+$\Vec{\xi}$ is the particle displacement,\\
+$\Vec{x}$ is the particle position.
+\subsection{Equation of Motion}
+The Equation of motion describes how a pressure variation generates a force that causes particle motion:
+\begin{equation}
+    -\nabla p = \rho_0 \cdot \frac{\partial\Vec{u}}{\partial t}
+\end{equation}
 \subsection{Wave Equation}
-The wave equation or the equation of propagation of acoustic pressure is given by
+The wave equation or the equation of propagation of acoustic pressure can be derived from the three preceding equations:
 \begin{equation}
     \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \nabla^2p
 \end{equation}
-where\\
-
-$t$ is time,\\
-
-$c$ is the speed of sound,\\
-$p$ is the acoustic pressure deviation,\\
-$\nabla$ is the Laplace operator.\\
 in Cartesian coordinates $(x,y,z)$:
 \begin{equation}
     \frac{1}{c^2}\frac{\partial^2p}{\partial t^2} = \frac{\partial^2p}{\partial x^2} + \frac{\partial^2p}{\partial y^2} + \frac{\partial^2p}{\partial z^2},
@@ -37,20 +69,17 @@ For now we assume the acoustic source to be a point source, it can thus be repre
 \subsubsection{General Solution to the Spherical Wave Equation}
 A general solution to the Wave equation is given by the pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979}:
 \begin{equation}
-    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{\mathbf{R}}{c}-t)}}{4\pi \mathbf{R}}\quad\quad for\quad\mathbf{R}>0,
+    p(\omega,\Vec{x},\Vec{x}') = \frac{e^{i\omega(\frac{r}{c}-t)}}{4\pi r}\quad\quad for\quad r > 0,
 \end{equation}
 where\\
-$P=$ pressure,\\
+$p$ is the pressure,\\
 $\omega=2\pi f$,\\
-$f=$ frequency,\\
-$t=$ time,\\
-$\mathbf{R}=|\mathbf{X}-\mathbf{X}'|$,\\
-$\mathbf{X}=$ vector talker location $(x,y,z)$,\\
-$\mathbf{X}=$ vector microphone location $(x',y',z')$,\\
-$i=\sqrt{-1}$,\\
-$c=$ speed of sound.
-\\
-\\
+$f$ is the frequency,\\
+$r=|\Vec{x}-\Vec{x}'|$ is the distance from source to receiver,\\
+$\Vec{x}$ is the source location $(x,y,z)$,\\
+$\Vec{x}'$ is the receiver location $(x',y',z')$,\\
+$i=\sqrt{-1}$.\\
+
 
     
 
