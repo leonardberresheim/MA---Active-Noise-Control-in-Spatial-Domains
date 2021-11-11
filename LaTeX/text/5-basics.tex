@@ -5,6 +5,7 @@
 \label{chap:fundamentals}
 
 \section{Propagation of sound}
+An acoustic wave is essentially a change in pressure. A local pressure change causes the surrounding medium to compress which in turn causes pressure changes thus leading to the propagation of an acoustic wave.
 
 \subsection{Wave Equation}
 The wave equation or the equation of propagation of acoustic pressure is given by
@@ -36,7 +37,7 @@ For now we assume the acoustic source to be a point source, it can thus be repre
 \subsubsection{General Solution to the Spherical Wave Equation}
 A general solution to the Wave equation is given by the pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979}:
 \begin{equation}
-    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{\mathbf{R}}{c}-t)}}{4\pi \mathbf{R}},
+    P(\omega,\mathbf{X},\mathbf{X'}) = \frac{e^{i\omega(\frac{\mathbf{R}}{c}-t)}}{4\pi \mathbf{R}}\quad\quad for\quad\mathbf{R}>0,
 \end{equation}
 where\\
 $P=$ pressure,\\
@@ -48,9 +49,10 @@ $\mathbf{X}=$ vector talker location $(x,y,z)$,\\
 $\mathbf{X}=$ vector microphone location $(x',y',z')$,\\
 $i=\sqrt{-1}$,\\
 $c=$ speed of sound.
+\\
+\\
 
-This equation fails at $r = 0$. Nevertheless some source is required to supply the energy being carried away however the wave equation does not contain a term representing this energy source.
-
+    
 
 \section{Spherical Harmonics}
 "The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
