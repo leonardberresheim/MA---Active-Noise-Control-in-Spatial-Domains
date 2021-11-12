@@ -14,7 +14,7 @@ Viewing acoustics as a linear phenomenon is very appealing due to the principle 
 where
 $f_1$ and $f_2$ are two causes,\\
 $\mathcal{L}(f)$ is the set of possible computational steps that predict the effect of $f$.\\
-Thus a complex sound field stemming from multiple sources can be regarded as the sum of sound fields produced by each source individually. In the same way a complex wave can be analyzed by each frequency separately. Nevertheless this acoustic model only represents an approximation.\cite{}
+Thus a complex sound field stemming from multiple sources can be regarded as the sum of sound fields produced by each source individually. In the same way a complex wave can be analyzed by each frequency separately. Nevertheless this acoustic model only represents an approximation\cite{Rossing2007}.\\
 \\
 The following three laws are used to develop the wave equation.
 \subsection{Equation of State}
@@ -79,9 +79,30 @@ $r=|\Vec{x}-\Vec{x}'|$ is the distance from source to receiver,\\
 $\Vec{x}$ is the source location $(x,y,z)$,\\
 $\Vec{x}'$ is the receiver location $(x',y',z')$,\\
 $i=\sqrt{-1}$.\\
+\\
+This solution does not contain any term representing the energy source and thus fails at the origin because some source of sound is required to provide the energy carried away.\cite{Acoustic}
 
+\subsubsection{?Inhomogenious wave equation?}
 
-    
+\subsubsection{Monopoles - Spherical Wave Equation}
+The problem of the missing sound source is solved by introducing the acoustic monopole source:
+\begin{equation}
+    \mathbf{\Phi}(r,t) = -\frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{1}{1+ika}\bigg\}e{-ik(r-a)}, 
+\end{equation}
+where\\
+$a$ is the radius of the emitting sphere,\\
+$k = \omega/c$ is the wavenumber,\\
+$\mathbf{Q}(t) = 4\pi a^2U_ae^{i\omega t}$ is the source strength,\\
+$U_a$ is the radial velocity on the surface,\\
+$\mathbf{\Phi}$ is the velocity potential with\\
+$p(r,t) = -\rho_0\frac{\partial\phi}{\partial t}$ and\\
+$u(r,t) = \frac{\partial phi}{\partial r}$.\\
+\\
+Thus,\\
+\begin{equation}
+    \mathbf{p}(r,t) = \frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{ik\rho_0 c}{1+ika}\bigg\}e{-ik(r-a)}, 
+\end{equation}
+
 
 \section{Spherical Harmonics}
 "The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
@@ -161,3 +182,13 @@ The spherical harmonics based image source method also known as the generalised 
 \end{equation}
 \\
 \\The advantages of the image source method are its relatively simple algorithmic implementation, its high degree of flexibility - many parameter can be set within the software - as well as its ability to generate a good approximation of the room impulse response. It nevertheless comes with its impediments such as its restriction to rectangular rooms and it's inability to model diffraction.\cite{Samarasinghe2018}
+
+
+\section{Algorithms}
+
+\subsection{Adaptive Filter}
+The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{}:
+\begin{equation}
+    F = F[e(k)] = F[]
+\end{equation}
+\subsubsection{Least Mean Square}
