@@ -26,6 +26,10 @@ function [in_p, out_p_abs] = image_source_pressure_wave(S,R,L,t,spacing,c,f,Q,rh
     S = S + [L(1)/2 L(2)/2 L(3)/2];
     R = R + [L(1)/2 L(2)/2 L(3)/2];
     % Deklaration of points forming the walls
+    % The walls are given in the following order if considering that 
+    % The x axis is pointing to the right, the y to the back
+    % and the z to the back
+    % left | front | right | back | bottom | top
     A = [0 0 0; 0 0 0; L(1) 0 0; 0 L(2) 0; 0 0 0; 0 0 L(3)];
     B = [0 1 0; 0 0 1; L(1) 1 0; 1 L(2) 0; 0 1 0; 1 0 L(3)];
     C = [0 0 1; 1 0 0; L(1) 0 1; 0 L(2) 1; 1 0 0; 0 1 L(3)];
