@@ -187,8 +187,35 @@ The spherical harmonics based image source method also known as the generalised 
 \section{Algorithms}
 
 \subsection{Adaptive Filter}
-The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{}:
+The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{Louv1984}:
 \begin{equation}
-    F = F[e(k)] = F[]
+    F = F[e(k)] = F[e(x(k),d(k),y(k))],
 \end{equation}
+satisfying the following properties:\\
+\begin{itemize}
+    \item Non-negativity $F[x(k), d(k), y(k)] \geq 0, \forall y(k), x(k), d(k)$
+    \item Optimality: F[x(k), d(k), d(k)] = 0
+\end{itemize}
+\\
+The following three components make up an adaptive algorithm. 
+\subsubsection{Definition of the Minimization Algorithm}
+
 \subsubsection{Least Mean Square}
+The updating equation for the le    ast-mean-square algorithm is
+\begin{equation}
+    \mathbf{W}(k+1) = \mathbf{w}(k) + 2\mu e(k)\mathbf{x}k
+\end{equation}
+where\\
+$\mathbf{w}$ is the filter coefficient,\\
+$e$ is the estimated error,\\
+$x$ is the input signal,\\
+$\mu$ is the step size\\
+and the error function is given by
+\begin{equation}
+    e(k) = d(k) - \mathbf{x}^T(k)\mathbf{w}(k)
+\end{equation}
+where\\
+$d$ is the reference signal,\\
+$\mathbf{x}^T$ is the transpose of $\mathbf{x}$
+
+
