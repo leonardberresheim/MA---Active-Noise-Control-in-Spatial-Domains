@@ -89,7 +89,7 @@ function [t,scale,prefix,in_p,out_p] = monopole_sound_source(p_source, p_receive
 
     % run the simulation
     % Set PMLAlpha to 0 to simulate reflecting walls
-    sensor_data = kspaceFirstOrder3D(kgrid, medium, source, sensor,'PMLAlpha', alpha, 'PMLSize',10, 'PMLInside', false);
+    sensor_data = kspaceFirstOrder3D(kgrid, medium, source, sensor,'PMLAlpha', 0);
 
     
     % Return input pressure and output pressure
