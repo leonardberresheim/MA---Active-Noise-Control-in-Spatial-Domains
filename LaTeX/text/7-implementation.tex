@@ -10,11 +10,18 @@ The image source method has been implemented using matlab. The implementation ca
 \subsubsection{Validation}
 In order to validate the soundness of the image source implementation it is compared to a reference implementation i.e. the \textit{monopole sound source in a homogeneous propagation medium} simulation provided by the \textit{k-wave} Matlab toolbox. This simulation is based on the k-space pseudo-spectral method whose numerical technique heavily rely on the Fast Fourier Transform.\cite{kwave}
 
-The effects of the image order can be discerned in (figure) on a time section of 2.5 seconds. When increasing the order number the shape of the output pressure curve for the image source method aligns with the reference curve. It should be noted that this implementation assumes rigid walls i.e. lossless reflection \textit{quod significat} that in a realistic environment the impact of the higher order reflections are a lot less significant than depicted at present and thus the image order can be reduced and with it also the computation time.
+The effects of the image order can be discerned in \ref{fig:ism_image_order} on a time section of 2.5 seconds. When increasing the order number the shape of the output pressure curve for the image source method aligns with the reference curve. It should be noted that this implementation assumes rigid walls i.e. lossless reflection \textit{quod significat} that in a realistic environment the impact of the higher order reflections are a lot less significant than depicted at present and thus the image order can be reduced and with it also the computation time.\\
+\\
+In fact as pictured in \ref{fig:ism_alpha_coef} even an unrealistically small wall absorption coefficient of 0.2 shadows the effect of the higher image order reflections.
 \begin{figure}
-    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots}}
-    \caption{Source and receiver in room with 4 walls and reflections of order 1}
-    \label{fig:ism_4_1_geo}
+    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_image_order_impact.png}}
+    \caption{Image source method pressure signal for various image orders}
+    \label{fig:ism_image_order}
+\end{figure}
+\begin{figure}
+    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_ism_absorption_impact.png}}
+    \caption{Image source method pressure signal for various absorption coefficient}
+    \label{fig:ism_alpha_coef}
 \end{figure}
 \newpage
 The implementation of the image source model will unfold in several steps. Building up from a rudimentary to a more complex and realistic implementation.
