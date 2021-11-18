@@ -18,7 +18,7 @@ Thus a complex sound field stemming from multiple sources can be regarded as the
 \\
 The following three laws are used to develop the wave equation.
 \subsection{Equation of State}
-The equation of state relates changes in pressure and density. It is determined by thermodynamic properties and dependant upon the material (e.g. air):
+The equation of state relates changes in pressure and density. It is determined by thermodynamic properties and dependant upon the material. The equation of state for linear acoustic waves in fluid is  given by\cite{Acoustic}
 \begin{equation}
     p = \mathbf{B}s = \rho_0c^2s,
 \end{equation}
@@ -37,7 +37,7 @@ The equation of continuity depicts the conservation of mass:
 \end{equation}
 where\\
 $t$ is time,\\
-$\nabla$ is the Laplace operator.\\
+$\nabla$ is the Nabla operator.\\
 $\Vec{u} = \frac{\partial\Vec{\xi}}{\partial t}$ is the particle velocity,\\
 $\Vec{\xi}$ is the particle displacement,\\
 $\Vec{x}$ is the particle position.
@@ -82,17 +82,17 @@ $i=\sqrt{-1}$.\\
 \\
 This solution does not contain any term representing the energy source and thus fails at the origin because some source of sound is required to provide the energy carried away.\cite{Acoustic}
 
-\subsubsection{?Inhomogenious wave equation?}
-
 \subsubsection{Monopoles - Spherical Wave Equation}
+\LARGE TODO : Add explanation for spherical wave / maybe a drawing or something!\\
+\normalsize
 The problem of the missing sound source is solved by introducing the acoustic monopole source:
 \begin{equation}
-    \mathbf{\Phi}(r,t) = -\frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{1}{1+ika}\bigg\}e{-ik(r-a)}, 
+    \mathbf{\Phi}(r,t) = -\frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{1}{1+ika}\bigg\}e^{-ik(r-a)}, 
 \end{equation}
 where\\
 $a$ is the radius of the emitting sphere,\\
 $k = \omega/c$ is the wavenumber,\\
-$\mathbf{Q}(t) = 4\pi a^2U_ae^{i\omega t}$ is the source strength,\\
+$\mathbf{Q}(t) = 4\pi a^2U_ae^{i\omega t}$ in $m^3/s$ is the source strength,\\
 $U_a$ is the radial velocity on the surface,\\
 $\mathbf{\Phi}$ is the velocity potential with\\
 $p(r,t) = -\rho_0\frac{\partial\phi}{\partial t}$ and\\
@@ -100,7 +100,7 @@ $u(r,t) = \frac{\partial phi}{\partial r}$.\\
 \\
 Thus,\\
 \begin{equation}
-    \mathbf{p}(r,t) = \frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{ik\rho_0 c}{1+ika}\bigg\}e{-ik(r-a)}, 
+    \mathbf{p}(r,t) = \frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{ik\rho_0 c}{1+ika}\bigg\}e^{-ik(r-a)}, 
 \end{equation}
 
 
@@ -187,7 +187,7 @@ The spherical harmonics based image source method also known as the generalised 
 \section{Algorithms}
 
 \subsection{Adaptive Filter}
-The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{Louv1984}:
+The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{Louv1984}. 
 \begin{equation}
     F = F[e(k)] = F[e(x(k),d(k),y(k))],
 \end{equation}
@@ -197,11 +197,10 @@ satisfying the following properties:\\
     \item Optimality: F[x(k), d(k), d(k)] = 0
 \end{itemize}
 \\
-The following three components make up an adaptive algorithm. 
-\subsubsection{Definition of the Minimization Algorithm}
+In other words an adaptive filter changes its coefficient to void an error signal. The filter can be realised as an finite impulse response (FIR), infinite impulse response (IIR), lattice and transform domain filter.
 
 \subsubsection{Least Mean Square}
-The updating equation for the le    ast-mean-square algorithm is
+The updating equation for the last-mean-square algorithm is
 \begin{equation}
     \mathbf{W}(k+1) = \mathbf{w}(k) + 2\mu e(k)\mathbf{x}k
 \end{equation}
