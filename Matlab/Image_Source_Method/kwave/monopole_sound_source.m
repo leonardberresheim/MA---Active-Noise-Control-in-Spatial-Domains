@@ -38,7 +38,7 @@
 
 
 
-function [t,scale,prefix,in_p,out_p] = monopole_sound_source(p_source, p_receiver, frequency, size_param, spacing,Nt,dt,alpha)
+function [t,scale,prefix,in_p,out_p] = monopole_sound_source(p_source, p_receiver, frequency, size_param, spacing,Nt,dt)
 
     % =========================================================================
     % SIMULATION

@@ -3,7 +3,7 @@
 % IMAGE_SOURCE_PRESSURE_WAVE computes the pressure deviation at a receiver
 % produced by a pressure wave emitted at a source in a room using
 % the image source method.
-%   [in_p, out_p_abs] = IMAGE_SOURCE_PRESSURE_WAVE(S,R,L,t,spacing,c,f,Q,rho,order,alpha,shift,geogebra) 
+%   [out_p] = IMAGE_SOURCE_PRESSURE_WAVE(S,R,L,t,spacing,c,f,Q,rho,order,alpha,geogebra) 
 %   Eingabe 
 %       S          (1 x 3) source point (x,y,z)
 %       R          (1 x 3) receiver point (x,y,z)
@@ -12,15 +12,16 @@
 %       spacing    space between each point on the grid (m)
 %       c          speed of sound
 %       f          input frequency
+%       mag        signal magnitude
 %       Q          source strength
 %       rho        density of the propagation medium
 %       order      image order - defines the level of reflection
 %       alpha      (1 x 6) Absorption coefficient for every wall
 %       geogebtra  (0 || 1) geometric information output
 %   Ausgabe 
-%       tot_output_pressure      (1 x n)  pressure deviation at receiver
+%       out_p      (1 x n)  pressure deviation at receiver
 % 
-function [in_p, out_p_abs] = image_source_pressure_wave(S,R,L,t,spacing,c,f,Q,rho,order,alpha,shift,geogebra)
+function [out_p] = image_source_pressure_wave(S,R,L,t,spacing,c,f,mag,Q,rho,order,alpha,geogebra)
     % Transform source and receiver point to place them relative to a
     % coordiante system originated in the center of the room
     S = S + [L(1)/2 L(2)/2 L(3)/2];
@@ -45,7 +46,7 @@ function [in_p, out_p_abs] = image_source_pressure_wave(S,R,L,t,spacing,c,f,Q,rh
     M = S;
     beta = ones(1,size(S,1));
     for i=1:order
-        [M, beta] = point_mirror(wall,M,alpha,beta);
+        [M, beta] = point_mirror(wall,M,R,alpha,beta);
     end
     % Display planes for geogebra---------------------
     if(geogebra == 1)
@@ -63,9 +64,9 @@ function [in_p, out_p_abs] = image_source_pressure_wave(S,R,L,t,spacing,c,f,Q,rh
     
     %-------------------------------------------------
     % Computation of the pressure wave at R for Source and all images
-    [in_p, out_p, out_p_abs] = pressure_wave(M, R, f, t, c, Q, rho, beta, spacing,shift);
+    out_p_abs = pressure_wave(M, R, f, t, c, Q, rho, beta, spacing);
     
     % Sum all output pressures
-    out_p_abs = sum(out_p_abs,1);
+    out_p = sum(out_p_abs,1);
     
 end 
