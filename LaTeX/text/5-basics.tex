@@ -185,7 +185,7 @@ The spherical harmonics based image source method also known as the generalised 
 
 
 \section{Algorithms}
-
+When trying to conduct active noise control we are confronted with an unknown system i.e. the noise source and its reverberation in the 3D space. It is thus necessary to identify the unknown model by the means of experimental evidence, such as measurement of the input-output desired response signal. Adaptive identification refers to a particular procedure where more about the system is learned with each new pair of measurements.\cite{Glentis1999}
 \subsection{Adaptive Filter}
 The objective of an adaptive filter consists in finding the optimal parameters $\mathbf{\theta}(k)$, in such a way that its output minimizes an objective function. This objective function $F$ is a function of a generic error signal $e(k)$ which in turn is a function of the input signal $x(k)$, the reference signal $d(k)$ and the adaptive filter output signal $y(k)$\cite{Louv1984}. 
 \begin{equation}
@@ -197,9 +197,10 @@ satisfying the following properties:\\
     \item Optimality: F[x(k), d(k), d(k)] = 0
 \end{itemize}
 \\
-In other words an adaptive filter changes its coefficient to void an error signal. The filter can be realised as an finite impulse response (FIR), infinite impulse response (IIR), lattice and transform domain filter.
+In other words an adaptive filter changes its coefficient to void an error signal. The filter can be realised as an finite impulse response (FIR), infinite impulse response (IIR), lattice and transform domain filter. One  very common transform domain filter is the least-mean-square algorithm.\cite{Thakkar2017}
 
 \subsubsection{Least Mean Square}
+The least-mean square algorithm uses the estimates of the gradient vector from the available data. It implements a procedure that correct the weight vector in the direction of the gradient vectors negative which eventually results in minimum mean square error. Its simplicity and ease of implementation makes the least-mean-square algorithm appealing for real-time systems.\cite{Thakkar2017}
 The updating equation for the last-mean-square algorithm is
 \begin{equation}
     \mathbf{W}(k+1) = \mathbf{w}(k) + 2\mu e(k)\mathbf{x}k
@@ -217,4 +218,6 @@ where\\
 $d$ is the reference signal,\\
 $\mathbf{x}^T$ is the transpose of $\mathbf{x}$
 
+
+\subsection{Filtered-x Least Mean Square}
 
