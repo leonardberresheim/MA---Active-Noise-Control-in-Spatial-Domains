@@ -25,8 +25,8 @@ function [out_p] = complex_wave_ism(wave,S,R,L,t,Fs,Ts,thresh,spacing,c,Q,rho,or
 %   Ausgabe      
 %       out_p      (1 x n)  pressure deviation at receiver
 % 
-    [wave_freq,mag,~] = decompose_wave(wave,t,Fs,Ts,thresh);
-    out_p = zeros(size(wave_freq,2),size(wave,2));
+    [wave_freq,mag,sine_waves] = decompose_wave(wave,t,Fs,Ts,thresh);
+    out_p = zeros(size(wave_freq,2),size(sine_waves,2));
     for i=1:size(wave_freq,2)
        out_p(i,:) = image_source_pressure_wave(S,R,L,t,spacing,c,wave_freq(i),mag(i),Q,rho,order,alpha,geogebra);
     end

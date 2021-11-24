@@ -24,12 +24,22 @@ function [f,mag,sine_waves] = decompose_wave(wave,t,Fs,Ts,thresh)
     f = Fs*(0:(n/2))/n;
     
     % Get the peaks from the frequency response
-    [pks,idx] = findpeaks(PS1);
+    if(length(PS1) > 3)
+        [pks,idx] = findpeaks(PS1);
+    else
+        pks = 0;
+        idx = 0;
+    end
+    
     
     % Get the frequence of those peaks and filter out the peaks under the
     % threshhold
     f = f(idx(pks > thresh));
     mag = pks(pks > thresh);
+    if size(f,2) == 0
+       mag = 0;
+       f = 0;
+    end
     % Generate sine_waves with conrrespondent frequencies
     sine_waves = mag'.*sin(2.*pi.*f'.*t);
 end

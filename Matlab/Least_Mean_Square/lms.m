@@ -1,7 +1,7 @@
-%% AUTHOR    : https://www.eit.lth.se/fileadmin/eit/courses/ett042/CE/CE2e.pdf
-function [e,w]=lms(mu,M,x,d);
+%% AUTHOR    : Leonard Berresheim
+function [e,y]=lms(mu,M,x,d)
 % LMS returns the filter coefficients from the least-mean-square algorithm
-%   [e,w] = LMS(mu,d,x) 
+%   [e,y] = LMS(mu,d,x) 
 %   Eingabe 
 %       mu      (1 x 1) step size
 %       M       (1 x 1) filter length
@@ -10,20 +10,20 @@ function [e,w]=lms(mu,M,x,d);
 %       
 %   Ausgabe 
 %       e       (n x 1) estimation error
-%       w       (M x 1) finatl filter coefficients
+%       y       (n x 1) final filter coefficients
 % 
-    %inital values: 0
-    w=zeros(M,1);
-    %number of samples of the input signal
     N=length(x);
-    %Make sure that u and d are column vectors
-    x=x(:);
-    d=d(:);
+    %inital values: 0
+    w=zeros(1,M);
+    y = zeros(1,N);
+
+    %number of samples of the input signal
+    
     %LMS
-    for n=M:N
-        xvec=x(n:-1:n-M+1);
-        e(n)=d(n)-w'*xvec;
-        w=w+mu*xvec*conj(e(n));
+    for i=M:N
+        y(i) = w*x(i:-1:i-M+1)';
+        e(i)=x(i)+y(i);
+        w = w-2*mu*e(i)*x(i:-1:i-M+1);
     end
-    e=e(:);
+    
 end
