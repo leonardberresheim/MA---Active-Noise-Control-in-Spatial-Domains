@@ -1,5 +1,5 @@
 %% AUTHOR    : Leonard Berresheim
-function [e,y]=new_lms(mu,M,x,d,S1,S2,R,L,t,Fs,Ts,thresh,spacing,c,Q,rho,order,alpha,geogebra)
+function [e,y_ism]=new_lms(mu,M,x,d,S1,S2,R,L,t,Fs,Ts,thresh,spacing,c,Q,rho,order,alpha,geogebra)
 % LMS returns the filter coefficients from the least-mean-square algorithm
 %   [e,y]=LMS(mu,M,x,d,S1,S2,R,L,t,Fs,Ts,thresh,spacing,c,Q,rho,order,alpha,geogebra);
 %   Eingabe 

@@ -19,7 +19,11 @@ function [f,mag,sine_waves] = decompose_wave(wave,t,Fs,Ts,thresh)
     n = length(wave);
     F = fft(wave);
     PS2 = abs(F/n);% Double sampling plot
-    PS1 = PS2(1:n/2+1);% Single sampling plot
+    if(mod(n,2) == 1)
+        PS1 = PS2(1:n/2+1.5);% Single sampling plot
+    else
+        PS1 = PS2(1:n/2+1);% Single sampling plot
+    end
     PS1(2:end-1) = 2*PS1(2:end-1);
     f = Fs*(0:(n/2))/n;
     
