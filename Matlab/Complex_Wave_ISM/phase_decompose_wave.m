@@ -25,15 +25,20 @@ function [f,mag,phase,sine_waves] = phase_decompose_wave(wave,t,Fs,Ts)
     f=sampleIndex*df; %x-axis index converted to ordered frequencies
     X2 = X; %store the FFT results in another array
     %detect noise (very small numbers (eps)) and ignore them
-    threshold = max(abs(X))/10000; %tolerance threshold
+    threshold = max(abs(X))/100; %tolerance threshold
     X2(abs(X)<threshold) = 0; %maskout values that are below the threshold   
     mag = abs(X2);
     f = f(mag ~= 0);
-    f = abs(f(1:length(f)/2));
-    mag = mag(mag ~= 0);
-    mag = mag(1:length(mag)/2)*2;
+    f = abs(f(1:round(length(f)/2)));
     phase = atan2(imag(X2),real(X2));
-    phase = phase(phase ~= 0);
-    phase = abs(phase(1:length(phase)/2) - pi/2);% - pi/2 is added to get the phase of a sine instead of cos
-    sine_waves = mag' .* sin(2*pi*f'*t + phase'); 
+    phase = phase(mag ~= 0);
+    phase = abs(phase(1:round(length(phase)/2)) - pi/2);% - pi/2 is added to get the phase of a sine instead of cos
+    mag = mag(mag ~= 0);
+    mag = mag(1:round(length(mag)/2))*2;
+    if(~isempty(mag))
+        sine_waves = mag' .* sin(2*pi*f'*t + phase'); 
+    else
+        sine_waves = zeros(1,n);
+    end
+    
 end
