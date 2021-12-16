@@ -1,7 +1,7 @@
 %% AUTHOR    : Leonard Berresheim 
 %% $DATE     : 18-Nov-2021 $ 
 %% This code was take from https://www.gaussianwaves.com/2015/11/interpreting-fft-results-obtaining-magnitude-and-phase-information/
-%% and changes to fit the projects requirements
+%% and changed to fit the projects requirements
 function [f,mag,phase,sine_waves] = phase_decompose_wave(wave,t,Fs,Ts)
 % DECOMPOSE_WAVE returns returns the fundamental sine waves composing a
 % complex wave.
