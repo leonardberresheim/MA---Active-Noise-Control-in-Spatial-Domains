@@ -1,77 +1,41 @@
-function [out_p] = ism(S,R,L,T,c,f,phase,order,alpha,spacing,geogebra)
+function p = ISM(S,R,L,T,phase,omega,c,alpha,order,spacing)
 %% AUTHOR    : Leonard Berresheim 
 %% $DATE     : 25-Nov-2021 $ 
-% IMAGE_SOURCE_PRESSURE_WAVE computes the pressure deviation at a receiver
+% ISM computes the pressure deviation at a receiver
 % produced by a pressure wave emitted at a source in a room using
-% the image source method.
-%   [out_p] = IMAGE_SOURCE_PRESSURE_WAVE(S,R,L,t,spacing,c,f,mag,phase,Q,rho,order,alpha,geogebra) 
+% the image source method at a time T.
+%   p = ISM(S,R,L,T,phase,omega,c,alpha,order,spacing) 
 %   Eingabe 
 %       S          (1 x 3) source point (x,y,z)
 %       R          (1 x 3) receiver point (x,y,z)
 %       L          (1 x 3) room dimension (Lx,Ly,Lz)
-%       t          (1 x n) time array
-%       spacing    space between each point on the grid (m)
-%       c          speed of sound
-%       f          input frequency
-%       mag        signal magnitude
+%       T          (1 x 1) time point
 %       phase      signal phase
-%       Q          source strength
-%       rho        density of the propagation medium
-%       order      image order - defines the level of reflection
+%       omega      2*pi*f | f : frequency
+%       c          propagation speed
 %       alpha      (1 x 6) Absorption coefficient for every wall
-%       geogebtra  (0 || 1) geometric information output
+%       order      image order - defines the level of reflection
+%       spacing    spacing between each grid point
 %   Ausgabe 
-%       out_p      (1 x n)  pressure deviation at receiver
+%       p      (1 x n)  pressure deviation at receiver
 % 
-
-    % Transform source and receiver point to place them relative to a
-    % coordiante system originated in the center of the room
-    %S = S + [L(1)/2 L(2)/2 L(3)/2];
-    %R = R + [L(1)/2 L(2)/2 L(3)/2];
-    % Deklaration of points forming the walls
-    % The walls are given in the following order if considering that 
-    % The x axis is pointing to the right, the y to the back
-    % and the z to the back
-    % left | front | right | back | bottom | top
-    A = [0 0 0; 0 0 0; L(1) 0 0; 0 L(2) 0; 0 0 0; 0 0 L(3)];
-    B = [0 1 0; 0 0 1; L(1) 1 0; 1 L(2) 0; 0 1 0; 1 0 L(3)];
-    C = [0 0 1; 1 0 0; L(1) 0 1; 0 L(2) 1; 1 0 0; 0 1 L(3)];
-    % Conversion of points into the plane quation coefficients of the walls
-    n_walls = size(A,1);
-    wall = zeros(n_walls,4);
-    for i=1:n_walls
-       wall(i,:) = plane_equation(A(i,:),B(i,:),C(i,:)); 
-    end
-
-    % Computation of the image points of S in relation to the walls/planes
-    % and its absorption coefficient.
-    M = S;
-    beta = ones(1,size(S,1));
-    for i=1:order
-        [M, beta] = point_mirror(wall,M,R,alpha,beta);
-    end
-    % Display planes for geogebra---------------------
-    if(geogebra == 1)
-        disp('----------------------------------------');
-        disp('Plane and point coordinates for GeoGebra');
-        disp('----------------------------------------');
-        for i=1:n_walls
-           disp(['Plane((' num2str(A(i,1)) ',' num2str(A(i,2)) ',' num2str(A(i,3)) '),(' num2str(B(i,1)) ',' num2str(B(i,2)) ',' num2str(B(i,3)) '),(' num2str(C(i,1)) ',' num2str(C(i,2)) ',' num2str(C(i,3)) '))']);
+    beta = sqrt(1-alpha);
+    p = 0;
+    for q=0:1
+        for j=0:1
+            for k=0:1
+                Rp = [S(1)-R(1)+2*q*R(1); S(2)-R(2)+2*j*R(2); S(3)-R(3)+2*k*R(3)];
+                for n=0:order
+                    for l=0:order
+                        for m=0:order
+                            Rr = 2.*[n*L(1);l*L(2);m*L(3)];
+                            gain = beta(1)^abs(n-q)*beta(2)^abs(n)*beta(3)^abs(l-j)*beta(4)^abs(l)*beta(5)^abs(m-k)*beta(6)^(m);
+                            radius = spacing*norm(Rp-Rr);
+                            p = p + gain*(exp(1i*(omega*((radius/c)-T)+phase)/(4*pi*radius));
+                        end
+                    end
+                end
+            end
         end
-        for i=1:size(M,1)
-           disp(['(' num2str(M(i,1)) ',' num2str(M(i,2)) ',' num2str(M(i,3)) ')']);
-        end
-        disp('----------------------------------------'); 
     end
-    
-    %-------------------------------------------------
-    % Computation of the pressure wave at R for Source and all images
-
-    radius = spacing.*sqrt(sum((M-R).^2, 2));
-    omega = 2*pi*f;      
-    out_p_abs = beta.*(exp(1i.*omega.*((radius./c)-T))/(4.*pi*radius));
-    
-    % Sum all output pressures
-    out_p = sum(out_p_abs,1);
-    
 end
