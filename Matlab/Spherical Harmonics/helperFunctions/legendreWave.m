@@ -1,8 +1,8 @@
-function P = legendreWave(r,k,plotting)
+function P = legendreWave(L,r,k,plotting)
     % k - cartesian to spherical conversion
     [rho_k,the_k,phi_k] = my_cart2sph(k);
     % Summation limit
-    L = ceil(exp(1)*rho_k*(2*max(max((r))))/2);
+    %L = ceil(exp(1)*rho_k*(2*max(max((r))))/2);
     % Unit Vector of k and r
     uk = unitvec(k);
     ur = unitvec(r);

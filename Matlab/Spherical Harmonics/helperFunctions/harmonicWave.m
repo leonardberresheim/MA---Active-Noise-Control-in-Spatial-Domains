@@ -1,11 +1,11 @@
-function P = harmonicWave(r,k,plotting)
+function P = harmonicWave(L,r,k,plotting)
     % k - cartesian to spherical conversion
     [rho_k,the_k,phi_k] = my_cart2sph(k);
     
     % Rho of r
     [rho_r,the_r,phi_r] = my_cart2sph(r);
     % Summation limit
-    L = ceil(exp(1)*rho_k*(sqrt(2)*max(max((r))))/2);
+    %L = ceil(exp(1)*rho_k*(sqrt(2)*max(max((r))))/2);
     
     % Computation of wave
     P = zeros(1,length(r(1)));

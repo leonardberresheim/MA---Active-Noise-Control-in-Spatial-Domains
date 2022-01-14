@@ -2,7 +2,6 @@ function P = harmonics2pressure(Clm,k,r,sz)
     phi_r = zeros(sz); the_r = phi_r; rho_r = phi_r;
     P = phi_r;
     L = size(Clm,1)-1;
-    [rho_k,~,~] = my_cart2sph(k);
     
     for idy=1:sz(1)
         for idx=1:sz(2)
@@ -16,7 +15,7 @@ function P = harmonics2pressure(Clm,k,r,sz)
         idl=l+1;
         for m=-l:l
             idm=m+idl;
-            P = P + Clm(idl,idm).*sphbessel(l,rho_k.*rho_r).*Ylm(l,m,the_r,phi_r);
+            P = P + Clm(idl,idm).*sphbessel(l,k.*rho_r).*Ylm(l,m,the_r,phi_r);
         end
     end
     close(h);
