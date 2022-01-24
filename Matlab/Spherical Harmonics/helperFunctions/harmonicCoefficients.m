@@ -1,4 +1,4 @@
-function Clm = harmonicCoefficients(L,R,rho_k,N,waveFun,n,wave,visualize)
+function [Clm, mic] = harmonicCoefficients(L,R,rho_k,N,waveFun,n,wave,visualize)
     p = 0:(2*N+1);
     phi_p = p*2*pi/(2*N+2);
     if(visualize == 1)

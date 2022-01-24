@@ -1,4 +1,4 @@
-function meanError = cmpWaves(w1,w2,visualize)
+function meanError = cmpWaves(w1,w2,r,visualize)
     sz = size(w1);
     if(sz(1) <= 1)
         reError = max(abs(real(w1-w2)));
@@ -24,10 +24,12 @@ function meanError = cmpWaves(w1,w2,visualize)
         if(visualize == 1)
            figure;
            subplot(221);
-           imagesc(abs(imag(w1-w2))); colorbar;
+           imagesc(r(1,:),r(2,:),abs(imag(w1-w2))); colorbar;
+           xlabel("Distance in [m]"); ylabel("Distance in [m]");
            title("Error for real part");
            subplot(222);
-           imagesc(abs(real(w1-w2))); colorbar;
+           imagesc(r(1,:),r(2,:),abs(real(w1-w2))); colorbar;
+           xlabel("Distance in [m]"); ylabel("Distance in [m]");
            title("Error for imag part");
         end
     end
