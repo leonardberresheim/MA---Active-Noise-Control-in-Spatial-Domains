@@ -3,6 +3,8 @@
 % -----------------------------------------------------------------------------
 \chapter{Fundamentals}
 \label{chap:fundamentals}
+In order to be up to snuff on how a \textit{spatial ANC} system works some understanding in acoustics is compulsory e.g. how to model a sound source, how the wave emitted by this source propagates in a 3-dimensional room i.e. how is the wave reflected by the rooms walls.\\
+Albeit there's multiple means of implementing \textit{spatial ANC} this paper will only carry out one possible implementation \textit{quod est} the wave-domain least mean square algorithm which requires for the acoustic model to be realized in the wave domain which has proven to be the most challenging segment but in return simplifies the process of \textit{spatial} ANC.
 
 \section{Propagation of sound}
 An acoustic wave is essentially a change in pressure. A local pressure change causes the surrounding medium to compress which in turn causes pressure changes thus leading to the propagation of an acoustic wave. This compression leads to a displacement of the particles in the medium.\\The linear wave equation can be used to describe such an acoustic wave. In reality the acoustic wave equation is non linear but for this application the linear approximation to the wave equation is a good model.\cite{Acoustic}\\
@@ -62,7 +64,7 @@ in Polar coordinates $(r,\theta, z)$:
 
 \subsection{Spherical Wave Equation}
 
-For now we assume the acoustic source to be a point source, it can thus be represented as a spherical wave. Furthermore we assume "spherical symmetry" i.e. the pressure and particle velocity equal for the same $r$, the distance from the 'origin' of the spherical wave. The wave equation for the spherically symmetric wave is\cite{Waves2004}:
+For simplicity we assume the acoustic source to be a point source, it can thus be represented as a spherical wave. Furthermore we assume "spherical symmetry" i.e. the pressure and particle velocity equal for the same $r$, the distance from the 'origin' of the spherical wave. The wave equation for the spherically symmetric wave is\cite{Waves2004}:
 \begin{equation}
     \frac{\partial^2rp(r,t)}{\partial r^2} = \frac{1}{c^2}\frac{\partial^2rp(r,t)}{\partial t^2}.
 \end{equation}
@@ -79,34 +81,17 @@ $r=|\Vec{x}-\Vec{x}'|$ is the distance from source to receiver,\\
 $\Vec{x}$ is the source location $(x,y,z)$,\\
 $\Vec{x}'$ is the receiver location $(x',y',z')$,\\
 $i=\sqrt{-1}$.\\
-\\
-This solution does not contain any term representing the energy source and thus fails at the origin because some source of sound is required to provide the energy carried away.\cite{Acoustic}
-
-\subsubsection{Monopoles - Spherical Wave Equation}
-\LARGE TODO : Add explanation for spherical wave / maybe a drawing or something!\\
-\normalsize
-The problem of the missing sound source is solved by introducing the acoustic monopole source:
-\begin{equation}
-    \mathbf{\Phi}(r,t) = -\frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{1}{1+ika}\bigg\}e^{-ik(r-a)}, 
-\end{equation}
-where\\
-$a$ is the radius of the emitting sphere,\\
-$k = \omega/c$ is the wavenumber,\\
-$\mathbf{Q}(t) = 4\pi a^2U_ae^{i\omega t}$ in $m^3/s$ is the source strength,\\
-$U_a$ is the radial velocity on the surface,\\
-$\mathbf{\Phi}$ is the velocity potential with\\
-$p(r,t) = -\rho_0\frac{\partial\phi}{\partial t}$ and\\
-$u(r,t) = \frac{\partial phi}{\partial r}$.\\
-\\
-Thus,\\
-\begin{equation}
-    \mathbf{p}(r,t) = \frac{\mathbf{Q}(t)}{4\pi r}\bigg\{\frac{ik\rho_0 c}{1+ika}\bigg\}e^{-ik(r-a)}, 
-\end{equation}
 
 
 \section{Spherical Harmonics}
+To implement the wave-domain least square method the acoustic model need to be implement in the wave domain thus requiring a representation of the primary and secondary noise field by the means of spherical harmonics.
 "The spherical harmonics are a set of orthogonal spatial basis functions that can be utilized
-to decompose any arbitrary function defined on the sphere."\cite{Samarasinghe2018}\\
+to decompose any arbitrary function defined on the sphere."\cite{Samarasinghe2018}\\ A graphical representation of spherical harmonics can be seen in \ref{fig:sph_harmonics}
+\begin{figure}
+    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots/spherical_hamonics.png}}
+    \caption{Image source method pressure signal for various image orders}
+    \label{fig:sph_harmonics}
+\end{figure}
 A homogeneous incident wave field $v(\mathbf{x},k)$ observed at $\mathbf{x}$ can thus be decomposed into\cite{Zhang2019}:
 \begin{equation}
     v(\mathbf{x},k)=\sum_{u=0}^\infty \sum_{m=-u}^u\beta_{um}(k)j_u(kr)\Upsilon_{um}(\Phi_x,\Psi_x),
