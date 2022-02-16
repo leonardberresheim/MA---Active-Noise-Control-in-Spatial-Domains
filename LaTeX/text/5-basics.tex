@@ -69,7 +69,7 @@ For simplicity we assume the acoustic source to be a point source, it can thus b
     \frac{\partial^2rp(r,t)}{\partial r^2} = \frac{1}{c^2}\frac{\partial^2rp(r,t)}{\partial t^2}.
 \end{equation}
 \subsubsection{General Solution to the Spherical Wave Equation}
-A general solution to the Wave equation is given by the pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979}:
+A general solution to the wave equation is given by the pressure wave emitted by a single frequency point source of acceleration in free space\cite{Allen1979}:
 \begin{equation}
     p(\omega,\Vec{x},\Vec{x}') = \frac{e^{i\omega(\frac{r}{c}-t)}}{4\pi r}\quad\quad for\quad r > 0,
 \end{equation}
@@ -125,26 +125,54 @@ $\overline Y_{um} = (-1)^mY_{l,-m}$ is the complex conjugate matrix,\\
 $i$ is the imaginary unit,\\
 $\mathbf k$ is a wave vector of length $k$,\\
 $\mathbf r$ is a position vector of length $r$,\\
-$\mathbf \hat k = \frac{\mathbf k}{|\mathbf k|}$ and $\mathbf \hat r$ is the unit vector of $\mathbf k$ and $\mathbf r$ respectively.\\
-in spherical coordinates $\mathbf k\{\rho_k,\theta_k,\phi_k\}$ and $\mathbf r\{\rho_r,\theta_r,\phi_r\}$:
+$\mathbf{ \hat{k}} = \frac{\mathbf{k}}{|\mathbf k|}$ and $\mathbf{\hat{r}}$ is the unit vector of $\mathbf k$ and $\mathbf r$ respectively.\\
+in spherical coordinates $\mathbf k\{k,\theta_k,\phi_k\}$ and $\mathbf r\{r,\theta_r,\phi_r\}$:
 \begin{equation}
-    e^{i \mathbf k \cdot \mathbf r} = 4 \pi \sum^\infty_{l=0}\sum_{m=-l}^l i^lj_u(\rho_k\rho_r)\overline Y_{um}(\theta_k,\phi_k){Y}_{um}(\theta_r,\phi_r),
+    e^{i \mathbf k \cdot \mathbf r} = 4 \pi \sum^\infty_{l=0}\sum_{m=-l}^l i^lj_u(kr)\overline Y_{um}(\theta_k,\phi_k){Y}_{um}(\theta_r,\phi_r),
 \end{equation}
 where\\
-$\mathbf k \cdot \mathbf r = \rho_k\rho_r[\sin\theta_k\sin\theta_r\cos(\phi_k-\phi_2)+\cos\theta_k\cos\theta_r]$,\\
-$\rho_k = \frac{2\pi}{\lambda} = \frac{2\pi f}{c}$,\\
+$\mathbf k \cdot \mathbf r = kr[\sin\theta_k\sin\theta_r\cos(\phi_k-\phi_2)+\cos\theta_k\cos\theta_r]$,\\
+$k = \frac{2\pi}{\lambda} = \frac{2\pi f}{c}$,\\
 $\lambda$ is the wave length.\\\\
-Substituting \ref{eq:plane_wave_expansion} into \ref{eq:wave_field_decomposition} yields\\\\
-\begin{flaligned}
-    4\pi i^lj_u(\rho_k\rho_r)\overline Y_{um}(\theta_k,\phi_k){Y}_{um}(\theta_r,\phi_r) = \beta_{um}(k)j_u(kr)Y_{um}(\theta_r,\phi_r)\\
-    \Leftrightarrow \beta_{um}(k) = 4\pi i^l  \overline Y_{um}(\theta_k,\phi_k)\frac{{Y}_{um}(\theta_r,\phi_r) }{Y_{um}(\theta_r,\phi_r)}\\
-    \Leftrightarrow \beta_{um}(k) = 4\pi i^l  \overline Y_{um}(\theta_k,\phi_k)
-\end{flaligned}\\\\
-resulting in an exact solution of the harmonic coefficients for a plane wave.\\
-\textit{Nota}
-The plane wave expansion is studied in order to compare its exact solution to the approximated result provided by implementation of the general equation.
+Substituting \ref{eq:plane_wave_expansion} into \ref{eq:wave_field_decomposition} yields\\
+\begin{flalign}
+\begin{split}
+    4\pi i^lj_u(kr)\overline Y_{um}(\theta_k,\phi_k){Y}_{um}(\theta_r,\phi_r) & = \beta_{um}(k)j_u(kr)Y_{um}(\theta_r,\phi_r)\\
+    \Leftrightarrow \beta_{um}(k) & = 4\pi i^l  \overline Y_{um}(\theta_k,\phi_k)\frac{{Y}_{um}(\theta_r,\phi_r) }{Y_{um}(\theta_r,\phi_r)}\\
+    \Leftrightarrow \beta_{um}(k) & = 4\pi i^l  \overline Y_{um}(\theta_k,\phi_k)
+\end{split}
+\end{flalign}\\
+resulting in an exact solution of the harmonic coefficients for a plane wave.\\\\
+\textit{Nota}\\
+The plane wave expansion is studied in order to compare its exact solution to the approximated result provided by the implementation of the general equation.
 
-
+\subsection{Harmonic Coefficients}
+When multiplying both sides of \ref{eq:wave_field_decomposition} by $\overline Y_{um}$ and integrating over the sphere we get\cite{Chen2017}:\\
+\begin{equation}
+    {\beta_{um}(k) = \frac{1}{\mathbf j_l(kr)}\int_0^\pi\int_0^{2\pi}P(r,\theta,\phi,k) \overline {\mathbf{Y}}_{um}(\theta,\phi)\,d\theta\, d\phi}
+\end{equation}\\
+For a given pressure signal this equation cannot be solved analytically, a numerical approximation is necessary.
+\section{Numerical Integration}
+\subsection{Gauss-Legendre Quadrature on the Sphere}
+The spherical harmonic transform can be sampled using the Gaussian sampling scheme and is given by
+\begin{equation}
+    C_{lm}(k) = \frac{1}{j_l(kR)} \sum_{q=0}^N\sum_{p=0}^{2N+1}a_qP(R,\theta_q,\phi_p,k)\overline Y_{lm}(\theta_q,\phi_p), n \leq N.
+\end{equation}
+where the weights are given by
+\begin{equation}
+    a_q = \frac{\pi}{N+1}\frac{2(1-\cos^2\theta_q)}{(N+2)^2[P_{N+2}(\cos \theta_q)]^2}, \quad 0 \leq q\leq N
+\end{equation}
+The azimuth angle is sampled at $2(N+1)$ equal-angle samples:
+\begin{equation}
+    \phi_p = p\frac{2\pi}{2N+2},\quad p=0,...,2N+1
+\end{equation}
+and the elevation angle is sampled by selecting $(N+1)$ samples that are the zeros of $P_{N+1}(\cos\theta)$:
+\begin{equation}
+    P_{N+1}(\cos\theta_q)=0, \quad 0 \leq q \leq N
+\end{equation}
+where\\
+$P_{N+1}$ is the Legendre polynomial of degree $N+1$\\
+which results in a total number of samples \textit{ergo} microphones of $2(N+1)^2$
 \section{Simulating an acoustic source in 3D - space}
 Once again there's multiple ways of modeling the reverberation of an acoustic source in a 3-dimentional room such as ray/beam tracing, boundary and finite element methods and digital waveguide meshes be as it may this paper resorts to the approach outlined by Allen and Berkley in 1979 which due to its simplicity and adequate accuracy still remains a sought-after technique \cite{Samarasinghe2018}
 
