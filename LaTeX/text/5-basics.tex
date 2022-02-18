@@ -157,14 +157,17 @@ For a given pressure signal this equation cannot be solved analytically, a numer
 \section{Spatial Sound Recording using a Spherical Microphone Array}\label{sec:sampling}
 Capturing the harmonics coefficients for the entire room with a limited amount of microphones is inconceivable. This however is not paramount as only a region within the room, the quiet zone, is of interest. In order to record the harmonic coefficients a spherical microphone array is placed around the region of interest. The use of a \textbf{spherical} microphone array is convenient due to its geometry coinciding with that of the spherical harmonics\cite{Chen2017}.\\
 To define the position of the microphones on the sphere a sampling method is required.
+
 \subsection{Gauss-Legendre Quadrature on the Sphere}\label{sec:Gauss}
 The spherical harmonic transform from (\ref{eq:harmonic_coefficients}) can be sampled using the Gaussian sampling scheme and is given by
 \begin{equation}
     \beta_{um}(k) = \frac{1}{j_l(kR)} \sum_{q=0}^N\sum_{p=0}^{2N+1}a_qP(R,\theta_q,\phi_p,k)\overline Y_{um}(\theta_q,\phi_p),
+    \label{eq:gauss_harmonic_coefficients}
 \end{equation}
 where the weights are
 \begin{equation}
     a_q = \frac{\pi}{N+1}\frac{2(1-\cos^2\theta_q)}{(N+2)^2[P_{N+2}(\cos \theta_q)]^2}, \quad 0 \leq q\leq N
+    \label{eq:gauss_weights}
 \end{equation}
 The azimuth angle is sampled at $2(N+1)$ equal-angle samples:
 \begin{equation}
