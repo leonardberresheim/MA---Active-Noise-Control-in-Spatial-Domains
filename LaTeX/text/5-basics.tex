@@ -157,7 +157,7 @@ For a given pressure signal this equation cannot be solved analytically, a numer
 \section{Spatial Sound Recording using a Spherical Microphone Array}\label{sec:sampling}
 Capturing the harmonics coefficients for the entire room with a limited amount of microphones is inconceivable. This however is not paramount as only a region within the room, the quiet zone, is of interest. In order to record the harmonic coefficients a spherical microphone array is placed around the region of interest. The use of a \textbf{spherical} microphone array is convenient due to its geometry coinciding with that of the spherical harmonics\cite{Chen2017}.\\
 To define the position of the microphones on the sphere a sampling method is required.
-\subsection{Gauss-Legendre Quadrature on the Sphere}
+\subsection{Gauss-Legendre Quadrature on the Sphere}\label{sec:Gauss}
 The spherical harmonic transform from (\ref{eq:harmonic_coefficients}) can be sampled using the Gaussian sampling scheme and is given by
 \begin{equation}
     \beta_{um}(k) = \frac{1}{j_l(kR)} \sum_{q=0}^N\sum_{p=0}^{2N+1}a_qP(R,\theta_q,\phi_p,k)\overline Y_{um}(\theta_q,\phi_p),
@@ -169,10 +169,12 @@ where the weights are
 The azimuth angle is sampled at $2(N+1)$ equal-angle samples:
 \begin{equation}
     \phi_p = p\frac{2\pi}{2N+2},\quad p=0,...,2N+1
+    \label{eq:azimuth_sample}
 \end{equation}
 and the elevation angle is sampled by selecting $(N+1)$ samples that are the zeros of $P_{N+1}(\cos\theta)$:
 \begin{equation}
     P_{N+1}(\cos\theta_q)=0, \quad 0 \leq q \leq N
+    \label{eq:elevation_sample}
 \end{equation}
 where\\
 $P_{N+1}$ is the Legendre polynomial of degree $N+1$\\\\
