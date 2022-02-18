@@ -2,78 +2,15 @@
 % Implementation
 % -----------------------------------------------------------------------------
 \chapter{Implementation}
-\label{chap:implementation}
-\section{Image Source Method}
-The image source method has been implemented using matlab. The implementation can be found in the \color{blue}\href{https://github.com/leonardberresheim/MA---Active-Noise-Control-in-Spatial-Domains/tree/main/Matlab/Image_Source_Method/ISM}{projects github repository}.\color{black}
 
+As noted before the ANC system has solely been implemented in the simulation environment Matlab. The system consist of several subsystems. These subsystems will be elaborated step step and their functioning will be demonstrated.\\
+The complete source code can be found in the \color{blue}\href{https://github.com/leonardberresheim/MA---Active-Noise-Control-in-Spatial-Domains/tree/main/Matlab}{projects github repository} \color{black} and is free to use, change and share without restrictions.
 
-\subsubsection{Validation}
-In order to validate the soundness of the image source implementation it is compared to a reference implementation i.e. the \textit{monopole sound source in a homogeneous propagation medium} simulation provided by the \textit{k-wave} Matlab toolbox. This simulation is based on the k-space pseudo-spectral method whose numerical technique heavily rely on the Fast Fourier Transform.\cite{kwave}
-
-The effects of the image order can be discerned in \ref{fig:ism_image_order} on a time section of 2.5 seconds. When increasing the order number the shape of the output pressure curve for the image source method aligns with the reference curve. It should be noted that this implementation assumes rigid walls i.e. lossless reflection \textit{quod significat} that in a realistic environment the impact of the higher order reflections are a lot less significant than depicted at present and thus the image order can be reduced and with it also the computation time.\\
-\\
-In fact as pictured in \ref{fig:ism_alpha_coef} even an unrealistically small wall absorption coefficient of 0.2 shadows the effect of the higher image order reflections.
+\section{Active Noise Control Setup}
+\section{Spherical Harmonics Decomposition}
+The accuracy of the spherical harmonics decomposition in (\ref{eq:primary_noise_field}) with it's truncation degree will be demonstrated using a plane wave as the exact harmonic coefficients can be calculated using (\ref{eq:plane_wave_coefficients})
 \begin{figure}
-    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_image_order_impact.png}}
-    \caption{Image source method pressure signal for various image orders}
-    \label{fig:ism_image_order}
-\end{figure}
-\begin{figure}
-    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_ism_absorption_impact.png}}
-    \caption{Image source method pressure signal for various absorption coefficient}
-    \label{fig:ism_alpha_coef}
-\end{figure}
-\newpage
-The implementation of the image source model will unfold in several steps. Building up from a rudimentary to a more complex and realistic implementation.
-\subsection{Images Source Method with 4 walls - image order 1}
-We start by modeling a simple room with only 4 walls (no ceiling or floor) with a receiver positioned at the point (single source positioned at the point $P(1,1,1)$ and its reflection of the first order relative to the walls as seen in figure \ref{fig:ism_4_1_geo}\\
-\begin{figure}
-    \centerline{\includegraphics[width=1.3\textwidth,keepaspectratio]{LaTeX/images/geometrie/ism_4_walls_order_1.png}}
-    \caption{Source and receiver in room with 4 walls and reflections of order 1}
-    \label{fig:ism_4_1_geo}
-\end{figure}
-When adding the pressure waves emitted by the source and all the source images we get the pressure deviation perceived at the receiver as seen in figure \ref{fig:ism_4_1_mat}
-\begin{figure}
-
-    \centerline{\includegraphics[width=1.8\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_order_1.png}}
-    \caption{Pressure deviation perceived at receiver emitted by source and source images}
-    \label{fig:ism_4_1_mat}
-\end{figure}
-\newpage
-\subsection{Image Source Method with 4 walls - image order 2}
-In the next step the same scenario is computed for an image order 2. Each image is produces itself one image relative to each wall as seen in figure \ref{fig:ism_4_2_geo}\\
-\begin{figure}
-    \centerline{\includegraphics[width=1\textwidth,keepaspectratio]{LaTeX/images/geometrie/ism_4_walls_order_2.png}}
-    \caption{Source and receiver in room with 4 walls and reflections of order 1}
-    \label{fig:ism_4_2_geo}
-\end{figure}
-The resulting pressure wave deviation can be seen in figure \ref{fig:ism_4_2_mat}
-\begin{figure}
-
-    \centerline{\includegraphics[width=1.5\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_order_2.png}}
-    \caption{Pressure deviation perceived at receiver emitted by source and source images}
-    \label{fig:ism_4_2_mat}
-\end{figure}
-\newpage
-\subsection{Image Source Method with 4 walls + ceiling + floor - image order 2}
-Adding a ceiling and a floor we get even more images which leads to a very busy 3D-Model in figure \ref{fig:ism_4_2_2_geo}\\
-\begin{figure}
-    \centerline{\includegraphics[width=1\textwidth,keepaspectratio]{LaTeX/images/geometrie/ism_4_walls_2_order_2.png}}
-    \caption{Source and receiver in room with 4 walls + ceiling + floor and reflections of order 1}
-    \label{fig:ism_4_2_2_geo}
-\end{figure}
-And the pressure deviation at receiver as seen in figure \ref{fig:ism_4_2_2_mat}
-\begin{figure}
-
-    \centerline{\includegraphics[width=1.5\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_2_order_2.png}}
-    \caption{Pressure deviation perceived at receiver emitted by source and source images}
-    \label{fig:ism_4_2_2_mat}
-\end{figure}
-
-After including absorption coefficients for each wall the output can be seen in figure \ref{fig:ism_4_2_2_mat_abs}
-\begin{figure}
-
-    \centerline{\includegraphics[width=1.5\textwidth,keepaspectratio]{LaTeX/images/plots/matlab_4_walls_2_order_2_abs.png}}
-    \caption{Pressure deviation perceived at receiver emitted by source and source images considering non-rigid walls}
-    \label{fig:ism_4_2_2_mat_abs}
+    \centerline{\includegraphics]{LaTeX/images/plots/spherical_hamonics.png}}
+    \caption{Plane wave in exponent form}
+    \label{fig:sph_harmonics}
 \end{figure}
