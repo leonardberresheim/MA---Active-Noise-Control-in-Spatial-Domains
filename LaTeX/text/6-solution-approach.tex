@@ -6,6 +6,7 @@
 The process of \textit{spacial ANC} seeks to reduce the residual signal at any point $\mathbf{x} \equiv \{r,\theta_x, \phi_x\}$ within the region of interest. The residual signal is given by
 \begin{equation}
     e(\mathbf{x},k) = v(\mathbf{x},k) + s(\mathbf{x},k),
+    \label{eq:residual}
 \end{equation}
 where\\
 $k$ is the wave number,\\
@@ -23,6 +24,7 @@ $\beta_{um}$ are the harmonic coefficients representing the primary noise field 
 Putting the harmonic coefficients in vector form we get:
 \begin{equation}
     \boldsymbol{\beta}(k) = [\beta_{0,0}(k),\beta_{1,-1}(k),...\beta_{N,N}(k)]^T
+    \label{eq:primary_coefs_vector}
 \end{equation}
 
 \section{Secondary Noise Field}
@@ -69,6 +71,7 @@ where\\
         \vdots & \vdots & \ddots & \vdots\\
         \eta_{NN}^{(1)}(k) & \eta_{NN}^{(2)}(k) & \hdots & \eta_{NN}^{(L)}(k)
     \end{bmatrix}
+    \label{eq:secondary_coef_vector}
 \end{equation}
 and\\
 \begin{equation}
