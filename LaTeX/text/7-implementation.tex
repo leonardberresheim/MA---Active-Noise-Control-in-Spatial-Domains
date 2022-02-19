@@ -31,7 +31,7 @@ When increasing the number of modes the resulting noise field gets closer and cl
 \\
 \textit{Nota}\\
 Only the imaginary part is plotted here as the behavior of the real part of the wave is analogous.
-\section{Spherical Microphone Array}
+\section{Spherical Microphone Array}\label{sec:ImplSphMic}
 The spherical microphone array is setup around the region of interest according to the Gaussian sampling scheme discussed in \textit{section \ref{sec:Gaussian}} with $2(N+1) = 8$ microphones on the azimuth angle in line with (\ref{eq:azimuth_sample}) and $(N + 1) = 4$ microphones on the elevation angle in line with (\ref{eq:elevation_sample}) resulting in a total of $2(N + 1)^2 = 32$ microphones arranged on the sphere \textit{(see figure \ref{fig:MicrophoneArray}})
 \begin{figure}
     \centerline{\includegraphics[width=\paperwidth]{LaTeX/images/plots/MicrophoneArray.png}}
@@ -71,10 +71,23 @@ The simulation setup is set in accordance with \cite{Zhang2019}. The environment
 \end{figure}
 
 \section{Point Source Reverberation}
-
+Figure \ref{fig:reverberation} depicts the primary noise field emitted by the point source and it's reverberation in the room caused by the walls reflection before any interference of the active noise canceling system. The objective is to have the sound energy within the region of interest \textit{(red circle)} to be reduced as much as possible.
 
 \begin{figure}
-    \centerline{\includegraphics[width=\paperwidth]{LaTeX/images/plots/ANCSetup.png}}
-    \caption{Simulation setup, where the blue points are the loudspeaker positions, the pink star is the noise source position and the black points represent the microphones positions}
-    \label{fig:setup}
+    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/Point_source_reverberation.png}}
+    \caption{Sound energy of primary noise field emitted by a point source and its reverberation in the room caused by the walls reflection with projection of loudspeakers and region of interest on the x-y-plane}
+    \label{fig:reverberation}
+\end{figure}
+
+\section{Active Noise Control}
+The same steps as in \textit{section \ref{sec:ImplSphM}} are taken to determine the approximation of harmonic coefficient for the primary noise field in the region of interest.\\
+The process is repeated analogously to compute the harmonic coefficients for the acoustic transfer function in \ref{eq:ATF_wavedomain} applying the image source method discussed in \textit{section \ref{sec:ism}}.\\
+The harmonic coefficients for the primary noise field and the coefficients for the acoustic transfer function are put into vector form in accordance with (\ref{eq:primary_coefs_vector}) and (\ref{eq:secondary_coef_vector}) respectively.\\
+The loudspeakers driving signals can then be revolved using (\ref{eq:matching}).
+The secondary noise field ca now we calculated applying the loudspeakers driving signals and the acoustic transfer function in to \ref{eq:secondary_noise_field_atf}. Adding the secondary noise field to the primary noise field as in (\ref{eq:residual}) results in the residual noise as pictured in figure 
+
+\begin{figure}
+    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/Point_source_reverberation.png}}
+    \caption{Sound Energy of residual noise field}
+    \label{fig:reverberation}
 \end{figure}
