@@ -195,10 +195,20 @@ An appropriate microphone setup should yield a set of harmonic coefficients resu
 \section{Simulating an acoustic source in 3D - space}\label{sec:Simulation}
 Once again there's multiple ways of modeling the reverberation of an acoustic source in a 3-dimentional room such as ray/beam tracing, boundary and finite element methods and digital waveguide meshes. Be as it may this paper resorts to the approach outlined by Allen and Berkley in 1979 which due to its simplicity and adequate accuracy still remains a sought-after technique \cite{Samarasinghe2018}.
 
+
+
 \subsection{Image Source Method}
 The image source method is a model that allows the computation of a source-to-receiver acoustic transfer function in an enclosed 3D-space. Within this method an acoustic wave produced by a source, when crossing a wall, produces an image which then itself is considered as a source for further computation. In a room with several walls each image then also produces an image.\cite{Allen1979}
 \\\\
-The exact solution to the wave equation in a rectangular, rigid-wall, room is given by the rooms impulse response function also known as the time domain Green's function\cite{Allen1979}:
+\begin{figure}
+    \centerline{\includegraphics[width=\paperwidth]{LaTeX/images/plots/IMS_in_x.png}}
+    \caption{Image source method with reflections for the x-dimension\cite{Fu2016}} where the black star is the receiver, the black point point is the source and the circle are the sources reflection for a certain order.
+    \label{fig:imsX}
+\end{figure}
+
+As depicted in figure \ref{fig:imsX} the distances from each source to receiver in the x-dimension are $[\hdots,x_0 + \tilde{x_0} + 2L_x,x_0-\tilde{x_0} + 2L_x,x_0+\tilde{x_0},x_0-\tilde{x_0},x_0+\tilde{x_0}-2L_x,x_0-\tilde{x_0}-2L_x,x_0+\tilde{x_0}-4L_x,\hdots]$ corresponding to the reflection orders $[\hdots,-3,-2,-1,0,1,2,3,\hdots]$\cite{Fu2016}.\\
+
+The more general solution to the wave equation in a rectangular, rigid-wall, room for all dimensions is given by the rooms impulse response function also known as the time domain Green's function\cite{Allen1979}:
 \begin{equation}
     p(t,\mathbf{X},\mathbf{X'})=\sum_{p=1}^8\sum_{r=-\infty}^\infty\frac{\delta[t-\frac{|\mathbf{R_p}+\mathbf{R_r}|}{c}]}{4\pi|\mathbf{R_p}+\mathbf{R_r}|},
 \end{equation}
@@ -208,7 +218,7 @@ $\mathbf{R_p}$ represents the eight vectors given by the eight permutations over
 \begin{equation}
     \mathbf{R_p}=(x\pm x', y\pm y', z\pm z')
 \end{equation}
-r is the integer vector triplet $(n,l,m)$, and
+r is the integer vector triplet $(n,l,m)$ depicting the reflection order in each dimension, and
 \begin{equation}
     \mathbf{R_r}=2(nL_x, lL_y, mL_z),
 \end{equation}
