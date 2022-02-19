@@ -84,10 +84,12 @@ The same steps as in \textit{section \ref{sec:ImplSphM}} are taken to determine 
 The process is repeated analogously to compute the harmonic coefficients for the acoustic transfer function in \ref{eq:ATF_wavedomain} applying the image source method discussed in \textit{section \ref{sec:ism}}.\\
 The harmonic coefficients for the primary noise field and the coefficients for the acoustic transfer function are put into vector form in accordance with (\ref{eq:primary_coefs_vector}) and (\ref{eq:secondary_coef_vector}) respectively.\\
 The loudspeakers driving signals can then be revolved using (\ref{eq:matching}).
-The secondary noise field ca now we calculated applying the loudspeakers driving signals and the acoustic transfer function in to \ref{eq:secondary_noise_field_atf}. Adding the secondary noise field to the primary noise field as in (\ref{eq:residual}) results in the residual noise as pictured in figure 
+The secondary noise field ca now we calculated applying the loudspeakers driving signals and the acoustic transfer function in to \ref{eq:secondary_noise_field_atf}. Adding the secondary noise field to the primary noise field as in (\ref{eq:residual}) results in the residual noise as pictured in figure \ref{fig:ANC1}. As intended the noise field emitted by the loudspeakers result in a satisfactory reduction of the sound energy within the region of interest. In can thus be claimed to have successfully implemented a \textit{spatial ANC} system for a given setup in a simulation environment.\\\\
 
 \begin{figure}
-    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/Point_source_reverberation.png}}
+    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/ANC_1png.png}}
     \caption{Sound Energy of residual noise field}
-    \label{fig:reverberation}
+    \label{fig:ANC1}
 \end{figure}
+
+To test the stability of the system the process is repeated with different positions for the noise source.
