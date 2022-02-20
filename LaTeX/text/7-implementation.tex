@@ -65,7 +65,7 @@ By \textit{exact} the analytical solution to the harmonic coefficient from (\ref
 \end{figure}
 
 \section{Simulation Setup}
-The simulation setup is set in accordance with \cite{Zhang2019}. The environment is modeled by a \textit{shoebox} room of $6m \times 6m \times 6m$ with reflection coefficients at [0.75,0.8,0.77,0.85,0.1,0.1] which are usual for a common room with relatively high reflection coefficients for the walls and relatively low reflection coefficients for floor and ceiling. The source is modeled as a point source as defined by (\ref{eq:point_source}. For now we assume the noise field to contain only a single frequency component and the point source to emit at a constant magnitude of 10.\\ The region of interest is spherical area of radius $R_1 = 0.5m$ located at the origin which as seen in \textit{section \ref{sec:primary}} leads to a number of modes of $N = \lceil ekR_1/2\rceil = 3$. As depicted in \textit{section \ref{sec:matching}} $(N+1)^2 = 16$ loudspeaker would be necessary to bear an exact solution. But as aforementioned and discussed \textit{Case 3} will be realized in which the number of loudspeaker is lesser and thus an approximation is required. The number of loudspeaker is set to 12 as seen in figure \ref{fig:setup}.
+The simulation setup is set in accordance with \cite{Zhang2019}. The environment is modeled by a \textit{shoebox} room of $6m \times 6m \times 6m$ with reflection coefficients at [0.75,0.8,0.77,0.85,0.1,0.1] which are usual for a common room with relatively high reflection coefficients for the walls and relatively low reflection coefficients for floor and ceiling. The source is modeled as a point source as defined by (\ref{eq:point_source}. For now we assume the noise field to contain only a single frequency component and the point source to emit at a constant magnitude of 10.\\ The region of interest is spherical area of radius $R_1 = 0.5m$ located at the origin which as seen in \textit{section \ref{sec:primary}} leads to a number of modes of $N = \lceil ekR_1/2\rceil = 3$. As depicted in \textit{section \ref{sec:matching}} $(N+1)^2 = 16$ loudspeaker would be necessary to bear an exact solution. But as aforementioned and discussed \textit{Case 3} will be realized in which the number of loudspeaker is lesser and thus an approximation is required. The source is located at $(2, 315◦ , 90◦)$ and the number of loudspeaker is set to 12 and arranged as seen in figure \ref{fig:setup}.
 
 \begin{figure}[H]
     \centerline{\includegraphics[width=180mm,keepaspectratio]{LaTeX/images/plots/ANCSetup.png}}
@@ -96,10 +96,18 @@ The secondary noise field ca now we calculated applying the loudspeakers driving
 \end{figure}
 
 To test the stability of the system the process is repeated with different positions for the noise source.
-1
-S = my_sph2cart(deg2rad(120),deg2rad(305),2);
-2
-S = my_sph2cart(deg2rad(70),deg2rad(205),1.5);
-
-3
-S = my_sph2cart(deg2rad(90),deg2rad(205),2.5);
+\begin{figure}[H]
+    \centerline{\includegraphics[width=180mm,keepaspectratio]{LaTeX/images/plots/ANC_2_both.png}}
+    \caption{Residual noise with and without ANC for source located at $(2, 305◦ , 120◦)$}
+    \label{fig:ANC1}
+\end{figure}
+\begin{figure}[H]
+    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/ANC_3_both.png}}
+    \caption{Residual noise with and without ANC for source located at $(1.5, 205◦ , 70◦)$}
+    \label{fig:ANC1}
+\end{figure}
+\begin{figure}[H]
+    \centerline{\includegraphics[width=\textwidth]{LaTeX/images/plots/ANC_4_both.png}}
+    \caption{Residual noise with and without ANC for source located at $(2.5, 205◦ , 90◦)$}
+    \label{fig:ANC1}
+\end{figure}
