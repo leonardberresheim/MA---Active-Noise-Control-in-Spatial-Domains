@@ -1,4 +1,17 @@
 function wave = monopoleWave(s,r,mag,rho_k,visualize)
+%% AUTHOR    : Leonard Berresheim 
+% MONOPOLEWAVE computes a monopole wave using the Greens function
+% wave
+%   wave = monopoleWave(s,r,mag,rho_k,visualize)
+%   Input 
+%       s           source position
+%       r           receiver positions
+%       mag         magnitude
+%       rho_k       wave number
+%       visualize   (boolean) whether to plot resulting wave
+%   Output 
+%       wave        (1 x n) wave
+
     wave = zeros(size(r,2),size(r,2));
     rho = 1200; Q = 1; c = 343;
     for idy = 1:size(r,2)

@@ -1,4 +1,15 @@
-function [len,pos] = loudspeaker_positions(n,sym)
+function [len,pos] = loudspeaker_positions(N,sym)
+%% AUTHOR    : Leonard Berresheim 
+% LOUDSPEAKER_POSITIONS returns loudspeaker position for setup
+% wave
+%   [len,pos] = loudspeaker_positions(N,sym)
+%   Input 
+%       N         room dimension by which the positions have to be shifted
+%       sym       whether to use symetric arrangement or not
+%   Output 
+%       len       number of loudspeakers
+%       pos       position of loudspeakers
+
     if(sym == 1)
         pos = [4,3,2.5; 
                1.8,3,2.5;
@@ -26,6 +37,6 @@ function [len,pos] = loudspeaker_positions(n,sym)
            5.5,0.5,4.5;
            0.5,5.5,4.5];
        
-    pos = pos' - [n;n;n];
+    pos = pos' - [N(1)/2;N(2)/2;N(3)/2];
     len = size(pos,2);
 end

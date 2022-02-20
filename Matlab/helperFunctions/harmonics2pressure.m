@@ -1,4 +1,16 @@
 function P = harmonics2pressure(Clm,k,r,sz)
+%% AUTHOR    : Leonard Berresheim 
+% HARMONIC2PRESSURE returns the noise field for a given set of harmonic
+% coefficients
+%   P = harmonics2pressure(Clm,k,r,sz)
+%   Input 
+%       clm      harmonic coefficients
+%       k        elevation
+%       r        (sz) distance values vector
+%       sz       size-vector
+%   Output 
+%       P        (sz) noise field
+% 
     phi_r = zeros(sz); the_r = phi_r; rho_r = phi_r;
     P = phi_r;
     L = size(Clm,1)-1;

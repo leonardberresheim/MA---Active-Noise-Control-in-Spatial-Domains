@@ -1,4 +1,20 @@
-function [Clm, mic] = harmonicCoefficients(L,R,rho_k,N,waveFun,n,wave,visualize)
+function [Clm, mic] = harmonicCoefficients(R,rho_k,N,waveFun,n,wave,visualize)
+%% AUTHOR    : Leonard Berresheim 
+% HARMONICCOEFFICIENTS conputes the harmonics coefficients using the
+% Gaussian sampling scheme.
+%   [Clm, mic] = HARMONICCOEFFICIENTS(R,rho_k,N,waveFun,n,wave,visualize)
+%   Input 
+%       R           Radius of region of interrest
+%       rho_k       wave number
+%       N           number of modes
+%       waveFun     Pressure function / acoustic transfer function
+%       n           axis limit for visualization
+%       wave        primary noise field for visualization
+%       visualize   (boolean) wheter to visualize result
+%   Output 
+%       Clm         Harmonic coefficients
+%       mic         2(N+1)^2 microphone position in cartesian coordinates
+% 
     p = 0:(2*N+1);
     phi_p = p*2*pi/(2*N+2);
     if(visualize == 1)
@@ -40,15 +56,14 @@ function [Clm, mic] = harmonicCoefficients(L,R,rho_k,N,waveFun,n,wave,visualize)
         ylabel("Pressure in [Pa]");
         xlabel("Microphone i");
     end
-    l = (0:L).';
+    l = (0:N).';
     Jl = sphbessel(l,rho_k*R);
 
-    Clm = zeros(L+1,2*L+1);
+    Clm = zeros(N+1,2*N+1);
     for q=1:length(the_q)
         for p=1:length(phi_p)
-            Yqp = harmonicMatrix(L,the_q(q),phi_p(p));
+            Yqp = harmonicMatrix(N,the_q(q),phi_p(p));
             cYqp = conj(Yqp);
-            %mic_c = my_sph2cart(the_q(q),phi_p(p),R);
             p_i = waveFun(R,the_q(q),phi_p(p));
             Clm = Clm + a_q(q)*p_i*cYqp;
         end

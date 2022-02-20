@@ -1,4 +1,16 @@
 function P = legendreWave(L,r,k,plotting)
+%% AUTHOR    : Leonard Berresheim 
+% LEGENDREWAVE computes a plane wave using the legendre expansion
+% wave
+%   P = legendreWave(L,r,k,plotting)
+%   Input 
+%       L         degree
+%       r         (1 x n) distance
+%       k         wave number
+%       plotting  (boolean) whether to plot resulting wave
+%   Output 
+%       P        (1 x n) wave
+
     % k - cartesian to spherical conversion
     [rho_k,the_k,phi_k] = my_cart2sph(k);
     % Summation limit

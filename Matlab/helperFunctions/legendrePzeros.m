@@ -1,4 +1,14 @@
 function fz = legendrePzeros(N,visualize)
+%% AUTHOR    : Leonard Berresheim 
+% LEGENDREPZEROS returns roots for the legendre polynome
+% wave
+%   fz = legendrePzeros(N,visualize)
+%   Input 
+%       N           degree
+%       visualize   (boolean) whetger to visualite results
+%   Output 
+%       fz          roots 
+
     x = linspace(0,pi,1000);
     y = @(x) legendreP(N+1,cos(x));
     zx = y(x).*circshift(y(x),[-1]) <= 0;  % Estimate zero crossings
