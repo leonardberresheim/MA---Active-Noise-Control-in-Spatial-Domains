@@ -103,7 +103,7 @@ When the number of loudspeaker is greater than the number of modes then there's 
 \subsubsection{Case 3: $L < (N + 1)^2$}
 This case is worthy of further consideration as it is the most viable for implementing a realistic \textit{spatial ANC} system. When the number of loudspeakers is lesser then the number of modes then there's is an exact solution only in a very special case\cite{Zhang2019}. In general however \textit{(and this will be of greater interest)} there's no exact solution and an approximation is necessary.
 \subsection{Least Squares Method}
-From the view point of the \textit{spatial ANC} system the location of the noise source as well as the source type are unknown. The only information available about the primary noise field is the microphones measurements. It is therefore necessary to identify an unknown system and one way to do so is to use an adaptive filter. The principle of an adaptive filter like the least square filter is to generate weights and adapt those weights which iteration in order to reduce the square error\.
+From the view point of the \textit{spatial ANC} system the location of the noise source as well as the source type are unknown. The only information available about the primary noise field is the microphones measurements. It is therefore necessary to identify an unknown system and one way to do so is to use an adaptive filter. The principle of an adaptive filter like the least square filter is to generate weights and adapt those weights which iteration in order to reduce the square error\cite{Louv1984}.
 \subsubsection{Wave-Domain Least Square Method}
 Applying the least square method on (\ref{eq:matching}) for \textit{case 3} comes back to solving the problem
 \begin{equation}
